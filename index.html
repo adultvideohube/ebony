@@ -215,10 +215,14 @@
         </div>
     </div>
 
+    <div class="container" id="video-container"></div>
+    <div class="pagination">
+        <button onclick="prevPage()">Previous</button>
+        <span id="page-number">1</span>
+        <button onclick="nextPage()">Next</button>
+    </div>
+
     <script>
-        let currentPage = 1;
-        const videosPerPage = 10;
-        
         const videos = [
             { title: "Black milf with a huge fat ass fucked by a big black cock", url: "https://drive.google.com/file/d/1-6cWNJcP-f7s5Klsm9AqxANYvnLFJi8u/preview", thumbnail: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXe2u4P3ChC_Ym_cmkNgFORSrvv-Bi6vVzzuEuZzq_1xwNL7djm04khSwoRZ9W28AF61XlfszKpZHzLblQRqMmfrr2gRPHjTPmEnr3Jsh-NTiM5Xzb_iqXc1pn47EDOwuI7gEeOxUtqrkk7lmNjpswmYJeul64Pa7tC5xtdQGjYhIdQeYuFP_DlxhlKmg/s620/Screenshot%202025-01-31%20055405.png" },
             { title: "Hot japan girl Minori Ichikawa gets dick in her tight pussy", url: "https://drive.google.com/file/d/1k8bZwxowcDOibqhi8DjqMMJaMvysfh-w/preview", thumbnail: "https://img.youtube.com/vi/1PnVor36_40/0.jpg" },
@@ -251,25 +255,21 @@
             { title: "Flask Web Development", url: "https://www.youtube.com/embed/MwZwr5Tvyxo", thumbnail: "https://img.youtube.com/vi/MwZwr5Tvyxo/0.jpg" }
         ];
 
+		let currentPage = 1;
+        const videosPerPage = 5;
+
         function displayVideos() {
             const container = document.getElementById("video-container");
             const start = (currentPage - 1) * videosPerPage;
             const end = start + videosPerPage;
             const paginatedVideos = videos.slice(start, end);
             container.innerHTML = paginatedVideos.map(video => `
-                <div class="video-item" onclick="openModal('${video.url}')">
+                <div class="video-item" onclick="window.open('${video.url}', '_blank')">
                     <img src="${video.thumbnail}" alt="${video.title}">
                     <h3>${video.title}</h3>
                 </div>
             `).join('');
             document.getElementById("page-number").textContent = currentPage;
-        }
-
-        function nextPage() {
-            if (currentPage * videosPerPage < videos.length) {
-                currentPage++;
-                displayVideos();
-            }
         }
 
         function prevPage() {
@@ -279,19 +279,14 @@
             }
         }
 
-        function openModal(videoUrl) {
-            document.getElementById("modal-video").src = videoUrl;
-            document.getElementById("modal").style.display = "flex";
-        }
-
-        function closeModal() {
-            document.getElementById("modal").style.display = "none";
-            document.getElementById("modal-video").src = "";
+        function nextPage() {
+            if (currentPage < Math.ceil(videos.length / videosPerPage)) {
+                currentPage++;
+                displayVideos();
+            }
         }
 
         displayVideos();
     </script>
 </body>
 </html>
-
-masih tidak bisa menampilkan daftar video
