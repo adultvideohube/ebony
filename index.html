@@ -3,59 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pornhub Video Playeree</title>
+    <title>Pornhub Video Player</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #121212;
-            color: #ffffff;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem 2rem;
             text-align: center;
         }
-
         .container {
-            padding: 20px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
         }
-
-        .video-player {
-            max-width: 100%;
-            margin: 20px auto;
-            background-color: #000;
+        .movie {
+            background-color: white;
             border-radius: 8px;
-            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
         }
-
-        .ads {
-            margin: 20px 0;
-        }
-
-        iframe {
-            border: none;
+        .movie iframe {
             width: 100%;
-            height: 500px;
+            height: 200px;
+            border-radius: 8px;
+        }
+        .movie h3 {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        .ad-container {
+            text-align: center;
+            margin: 2rem 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Pornhub Video Player</h1>
-        <p>Enjoy premium content!</p>
+    <header>
+        <h1>Enjoy premium content!</h1>
+    </header>
+    <div class="ad-container">
 
-	    <div id="modal-content">
-            <button onclick="closeModal()">Close</button>
-            <img id="modal-img" src="https://image.tmdb.org/t/p/w500/vYqt6kb4lcF8wwqsMMaULkP9OEn.jpg" alt="Movie Poster">
-            <h2 id="modal-title">Moana 2</h2>
-            <p class="genres" id="modal-genres">Genres: Animation, Adventure, Family, Comedy, Mystery</p>
-            <p id="modal-overview">After receiving an unexpected call from her wayfinding ancestors, Moana journeys alongside Maui and a new crew to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she's ever faced.</p>
-            <p id="modal-release-date">Release Date: 2024-11-21</p>
-            <iframe id="modal-trailer" width="100%" height="315" frameborder="0" allowfullscreen="" src="https://drive.google.com/file/d/1fQqMxposP4dx4BAK23RprTjBtn_tBVPb/preview" style="display: block;"></iframe>
-            <div class="ad-section">
-            </div>
-            <button onclick="goBackToMovies()">Back to Movies</button>
-        </div>
-	    
-        <style type="text/css">
+<style type="text/css">
   .mobileShow {display: none;}
 
   /* Smartphone Portrait and Landscape */
@@ -97,43 +93,21 @@
 <script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center></div>
 
 <script type='text/javascript' src='//identicalprofile.com/26/0e/a6/260ea6a6ea8b17c3cc8804c83f0fdc37.js'></script>
-
-        <!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,4922497,4,0,0,0,00000000']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4922497&101" alt="" border="0"></a></noscript>
-<!-- Histats.com  END  -->
+	
+    </div>
+    <div class="container">
+        <div class="movie">
+            <h3>Movie 1</h3>
+            <iframe allow="autoplay" src="https://drive.google.com/file/d/1fQqMxposP4dx4BAK23RprTjBtn_tBVPb/preview"></iframe>
+        </div>
+        <div class="movie">
+            <h3>Movie 2</h3>
+            <iframe allow="autoplay" src="https://drive.google.com/file/d/1aBcDeFgHiJkLmNoPqRsTtUvWxYzZ/preview"></iframe>
+        </div>
+        <div class="movie">
+            <h3>Movie 3</h3>
+            <iframe allow="autoplay" src="https://drive.google.com/file/d/1XyZpAbCdEfGhIjKlmNoPqRsTtUvWx/preview"></iframe>
         </div>
     </div>
-
-    <script>
-import { ApifyClient } from "apify-client";
-
-const apifyClient = new ApifyClient({ token: "apify_api_e55hslUhm1mNjaLjOQiJg3xwMsRuQh2lFSjL" });
-
-// Define the input for the Actor
-const actorInput = {
-    searchStringsArray: ["ramen"],
-    locationQuery: "New York, USA",
-    maxCrawledPlacesPerSearch: 10,
-    language: "en",
-};
-
-// Run an Actor with an input
-console.log("Running the Actor...");
-const actorRun = await apifyClient
-    .actor("compass/crawler-google-places")
-    .start(actorInput);
-
-console.log(`🚀 Actor was started`);
-console.log(`💾 Check your run here: https://console.apify.com/actors/runs/${actorRun.id}`);
-    </script>
 </body>
 </html>
