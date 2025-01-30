@@ -33,11 +33,6 @@
             border: none;
             cursor: pointer;
         }
-        .ad-container {
-            margin: 1rem 0;
-            background-color: #ddd;
-            padding: 1rem;
-        }
         .container {
             padding: 2rem;
             display: grid;
@@ -93,13 +88,6 @@
             height: 400px;
             border-radius: 8px;
         }
-        .ad-section {
-            margin-top: 1rem;
-            background-color: #444;
-            padding: 1rem;
-            border-radius: 8px;
-            color: white;
-        }
         #modal button {
             margin-top: 1rem;
             padding: 0.5rem 1rem;
@@ -115,23 +103,12 @@
     <header>
         <h1>Video Explorer</h1>
     </header>
-
-    <!-- Iklan Adsterra di atas daftar video -->
-    <div class="ad-container">
-        <p>Adsterra Ad Here (Banner Ad)</p>
-        <!-- Tempatkan kode iklan Adsterra di sini -->
-    </div>
-
     <div class="search-container">
         <input type="text" id="search" placeholder="Search videos...">
         <button onclick="searchVideos()">Search</button>
     </div>
-
-    <div class="container" id="video-container"></div>
-
-    <!-- Iklan Adsterra di bawah daftar video -->
-    <div class="ad-container">
-        <style type="text/css">
+	
+	<style type="text/css">
   .mobileShow {display: none;}
 
   /* Smartphone Portrait and Landscape */
@@ -173,63 +150,17 @@
 <script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center></div>
 
 <script type='text/javascript' src='//identicalprofile.com/26/0e/a6/260ea6a6ea8b17c3cc8804c83f0fdc37.js'></script>
-    </div>
-
+	
+    <div class="container" id="video-container"></div>
     <div class="pagination">
         <button onclick="prevPage()">Previous</button>
         <span id="page-number">1</span>
         <button onclick="nextPage()">Next</button>
     </div>
-
-    <!-- Modal Video dengan Iklan -->
     <div id="modal">
         <div id="modal-content">
             <button onclick="closeModal()">Close</button>
             <iframe id="modal-video" src="" frameborder="0" allowfullscreen></iframe>
-            
-            <!-- Iklan di dalam modal -->
-            <div class="ad-section">
-                <style type="text/css">
-  .mobileShow {display: none;}
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){ 
-      .mobileShow {display: inline;}
-  }
-  .mobileHide { display: inline; }
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){
-     .mobileHide { display: none;}
-  }
-</style>
-
-     <div class="mobileShow">
-<center><script type="text/javascript">
-	atOptions = {
-		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
-<div class="mobileHide"><center><script type="text/javascript">
-	atOptions = {
-		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center></div>
-            </div>
         </div>
     </div>
 
@@ -237,6 +168,7 @@
         let currentPage = 1;
         const videosPerPage = 10;
 
+        // Daftar Video (Tinggal Ditambah)
         const videos = [
             { title: "Mena carlisle loves that big black jovan jordan dick in her tight pussy", url: "https://drive.google.com/file/d/1fQqMxposP4dx4BAK23RprTjBtn_tBVPb/preview", thumbnail: "https://img.youtube.com/vi/dD2EISBDjWM/0.jpg" },
             { title: "Belajar CSS", url: "https://www.youtube.com/embed/1PnVor36_40", thumbnail: "https://img.youtube.com/vi/1PnVor36_40/0.jpg" },
@@ -248,18 +180,16 @@
             { title: "Python Tutorial", url: "https://www.youtube.com/embed/rfscVS0vtbw", thumbnail: "https://img.youtube.com/vi/rfscVS0vtbw/0.jpg" },
             { title: "Django Crash Course", url: "https://www.youtube.com/embed/F5mRW0jo-U4", thumbnail: "https://img.youtube.com/vi/F5mRW0jo-U4/0.jpg" },
             { title: "Flask Web Development", url: "https://www.youtube.com/embed/MwZwr5Tvyxo", thumbnail: "https://img.youtube.com/vi/MwZwr5Tvyxo/0.jpg" }
-			
-			// Tambahkan video baru (Page 2)
-			{ title: "Laravel Basics", url: "https://www.youtube.com/embed/1PnVor36_41", thumbnail: "https://img.youtube.com/vi/dD2EISBDjWM/0.jpg" },
-            { title: "Laravel Basics2", url: "https://www.youtube.com/embed/1PnVor36_40", thumbnail: "https://img.youtube.com/vi/1PnVor36_40/0.jpg" },
-            { title: "Laravel Basics3", url: "https://www.youtube.com/embed/W6NZfCO5SIk", thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg" },
-            { title: "Laravel Basics4", url: "https://www.youtube.com/embed/N3AkSS5hXMA", thumbnail: "https://img.youtube.com/vi/N3AkSS5hXMA/0.jpg" },
-            { title: "Laravel Basics5", url: "https://www.youtube.com/embed/TlB_eWDSMt4", thumbnail: "https://img.youtube.com/vi/TlB_eWDSMt4/0.jpg" },
-            { title: "Laravel Basics6", url: "https://www.youtube.com/embed/oSIv-E60NiU", thumbnail: "https://img.youtube.com/vi/oSIv-E60NiU/0.jpg" },
-            { title: "Laravel Basics7", url: "https://www.youtube.com/embed/L72fhGm1tfE", thumbnail: "https://img.youtube.com/vi/L72fhGm1tfE/0.jpg" },
-            { title: "Laravel Basics8", url: "https://www.youtube.com/embed/rfscVS0vtbw", thumbnail: "https://img.youtube.com/vi/rfscVS0vtbw/0.jpg" },
-            { title: "Laravel Basics9", url: "https://www.youtube.com/embed/F5mRW0jo-U4", thumbnail: "https://img.youtube.com/vi/F5mRW0jo-U4/0.jpg" },
-            { title: "Laravel Basics10", url: "https://www.youtube.com/embed/MwZwr5Tvyxo", thumbnail: "https://img.youtube.com/vi/MwZwr5Tvyxo/0.jpg" }
+	    { title: "Tutorial HTML", url: "https://www.youtube.com/embed/dD2EISBDjWM", thumbnail: "https://img.youtube.com/vi/dD2EISBDjWM/0.jpg" },
+            { title: "Belajar CSS", url: "https://www.youtube.com/embed/1PnVor36_40", thumbnail: "https://img.youtube.com/vi/1PnVor36_40/0.jpg" },
+            { title: "JavaScript Dasar", url: "https://www.youtube.com/embed/W6NZfCO5SIk", thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg" },
+            { title: "ReactJS Tutorial", url: "https://www.youtube.com/embed/N3AkSS5hXMA", thumbnail: "https://img.youtube.com/vi/N3AkSS5hXMA/0.jpg" },
+            { title: "NodeJS Dasar", url: "https://www.youtube.com/embed/TlB_eWDSMt4", thumbnail: "https://img.youtube.com/vi/TlB_eWDSMt4/0.jpg" },
+            { title: "MongoDB Introduction", url: "https://www.youtube.com/embed/oSIv-E60NiU", thumbnail: "https://img.youtube.com/vi/oSIv-E60NiU/0.jpg" },
+            { title: "ExpressJS Crash Course", url: "https://www.youtube.com/embed/L72fhGm1tfE", thumbnail: "https://img.youtube.com/vi/L72fhGm1tfE/0.jpg" },
+            { title: "Python Tutorial", url: "https://www.youtube.com/embed/rfscVS0vtbw", thumbnail: "https://img.youtube.com/vi/rfscVS0vtbw/0.jpg" },
+            { title: "Django Crash Course", url: "https://www.youtube.com/embed/F5mRW0jo-U4", thumbnail: "https://img.youtube.com/vi/F5mRW0jo-U4/0.jpg" },
+            { title: "Flask Web Development", url: "https://www.youtube.com/embed/MwZwr5Tvyxo", thumbnail: "https://img.youtube.com/vi/MwZwr5Tvyxo/0.jpg" }
         ];
 
         function displayVideos() {
@@ -284,6 +214,17 @@
         function closeModal() {
             document.getElementById("modal").style.display = "none";
             document.getElementById("modal-video").src = "";
+        }
+
+        function searchVideos() {
+            const query = document.getElementById("search").value.toLowerCase();
+            const filteredVideos = videos.filter(v => v.title.toLowerCase().includes(query));
+            document.getElementById("video-container").innerHTML = filteredVideos.map(video => `
+                <div class="video-item" onclick="openModal('${video.url}')">
+                    <img src="${video.thumbnail}" alt="${video.title}">
+                    <h3>${video.title}</h3>
+                </div>
+            `).join('');
         }
 
         function nextPage() {
