@@ -17,27 +17,6 @@
             color: white;
             padding: 1rem;
         }
-        .search-container {
-            margin: 1rem auto;
-        }
-        .search-container input {
-            padding: 0.5rem;
-            width: 300px;
-            font-size: 1rem;
-        }
-        .search-container button {
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .ad-container {
-            margin: 1rem 0;
-            background-color: #ddd;
-            padding: 1rem;
-        }
         .container {
             padding: 2rem;
             display: grid;
@@ -94,13 +73,6 @@
             height: 400px;
             border-radius: 8px;
         }
-        .ad-section {
-            margin-top: 1rem;
-            background-color: #444;
-            padding: 1rem;
-            border-radius: 8px;
-            color: white;
-        }
         #modal button {
             margin-top: 1rem;
             padding: 0.5rem 1rem;
@@ -116,52 +88,6 @@
     <header>
         <h1>Video Explorer</h1>
     </header>
-    <div class="ad-container"><style type="text/css">
-  .mobileShow {display: none;}
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){ 
-      .mobileShow {display: inline;}
-  }
-  .mobileHide { display: inline; }
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){
-     .mobileHide { display: none;}
-  }
-</style>
-
-     <div class="mobileShow">
-<center><script type="text/javascript">
-	atOptions = {
-		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
-<div class="mobileHide"><center><script type="text/javascript">
-	atOptions = {
-		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center></div>
-
-<script type='text/javascript' src='//identicalprofile.com/26/0e/a6/260ea6a6ea8b17c3cc8804c83f0fdc37.js'></script></div>
-    <div class="search-container">
-        <input type="text" id="search" placeholder="Search videos...">
-        <button onclick="searchVideos()">Search</button>
-    </div>
     <div class="container" id="video-container"></div>
     <div class="pagination">
         <button onclick="prevPage()">Previous</button>
@@ -172,46 +98,6 @@
         <div id="modal-content">
             <button onclick="closeModal()">Close</button>
             <iframe id="modal-video" src="" frameborder="0" allowfullscreen></iframe>
-            <div class="ad-section"><style type="text/css">
-  .mobileShow {display: none;}
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){ 
-      .mobileShow {display: inline;}
-  }
-  .mobileHide { display: inline; }
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){
-     .mobileHide { display: none;}
-  }
-</style>
-
-     <div class="mobileShow">
-<center><script type="text/javascript">
-	atOptions = {
-		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
-<div class="mobileHide"><center><script type="text/javascript">
-	atOptions = {
-		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center></div></div>
         </div>
     </div>
 
@@ -220,40 +106,20 @@
         const videosPerPage = 10;
         
         const videos = [
-            // Page 1
-            { title: "HTML Tutorial", url: "https://www.youtube.com/embed/dD2EISBDjWM", thumbnail: "https://img.youtube.com/vi/dD2EISBDjWM/0.jpg" },
+            // PAGE 1
+            { title: "HTML Basics", url: "https://www.youtube.com/embed/dD2EISBDjWM", thumbnail: "https://img.youtube.com/vi/dD2EISBDjWM/0.jpg" },
             { title: "CSS Basics", url: "https://www.youtube.com/embed/1PnVor36_40", thumbnail: "https://img.youtube.com/vi/1PnVor36_40/0.jpg" },
-            { title: "JavaScript for Beginners", url: "https://www.youtube.com/embed/W6NZfCO5SIk", thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg" },
-            { title: "ReactJS Tutorial", url: "https://www.youtube.com/embed/N3AkSS5hXMA", thumbnail: "https://img.youtube.com/vi/N3AkSS5hXMA/0.jpg" },
-            { title: "Node.js Basics", url: "https://www.youtube.com/embed/TlB_eWDSMt4", thumbnail: "https://img.youtube.com/vi/TlB_eWDSMt4/0.jpg" },
-            { title: "VueJS Basics", url: "https://www.youtube.com/embed/FXpIoQ_rT_c", thumbnail: "https://img.youtube.com/vi/FXpIoQ_rT_c/0.jpg" },
-            { title: "Python Full Course", url: "https://www.youtube.com/embed/rfscVS0vtbw", thumbnail: "https://img.youtube.com/vi/rfscVS0vtbw/0.jpg" },
-            { title: "Django Crash Course", url: "https://www.youtube.com/embed/F5mRW0jo-U4", thumbnail: "https://img.youtube.com/vi/F5mRW0jo-U4/0.jpg" },
-            { title: "Flask Web Development", url: "https://www.youtube.com/embed/MwZwr5Tvyxo", thumbnail: "https://img.youtube.com/vi/MwZwr5Tvyxo/0.jpg" },
+            { title: "JavaScript Basics", url: "https://www.youtube.com/embed/W6NZfCO5SIk", thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg" },
+            { title: "ReactJS", url: "https://www.youtube.com/embed/N3AkSS5hXMA", thumbnail: "https://img.youtube.com/vi/N3AkSS5hXMA/0.jpg" },
+            { title: "VueJS", url: "https://www.youtube.com/embed/FXpIoQ_rT_c", thumbnail: "https://img.youtube.com/vi/FXpIoQ_rT_c/0.jpg" },
 
-			// Page 2
-            { title: "VueJS Basics", url: "https://www.youtube.com/embed/FXpIoQ_rT_c", thumbnail: "https://img.youtube.com/vi/FXpIoQ_rT_c/0.jpg" },
-            { title: "AngularJS Crash Course", url: "https://www.youtube.com/embed/k5E2AVpwsko", thumbnail: "https://img.youtube.com/vi/k5E2AVpwsko/0.jpg" },
-            { title: "Bootstrap Tutorial", url: "https://www.youtube.com/embed/qf7dkrce-mQ", thumbnail: "https://img.youtube.com/vi/qf7dkrce-mQ/0.jpg" },
-            { title: "PHP for Beginners", url: "https://www.youtube.com/embed/O_9u1P5YjVc", thumbnail: "https://img.youtube.com/vi/O_9u1P5YjVc/0.jpg" },
-            { title: "Laravel Crash Course", url: "https://www.youtube.com/embed/ImtZ5yENzgE", thumbnail: "https://img.youtube.com/vi/ImtZ5yENzgE/0.jpg" },
-            { title: "MySQL Tutorial", url: "https://www.youtube.com/embed/HXV3zeQKqGY", thumbnail: "https://img.youtube.com/vi/HXV3zeQKqGY/0.jpg" },
-            { title: "C++ Programming Basics", url: "https://www.youtube.com/embed/vLnPwxZdW4Y", thumbnail: "https://img.youtube.com/vi/vLnPwxZdW4Y/0.jpg" },
-            { title: "Java Programming", url: "https://www.youtube.com/embed/eIrMbAQSU34", thumbnail: "https://img.youtube.com/vi/eIrMbAQSU34/0.jpg" },
-            { title: "Swift iOS Development", url: "https://www.youtube.com/embed/comQ1-x2a1Q", thumbnail: "https://img.youtube.com/vi/comQ1-x2a1Q/0.jpg" },
-            { title: "Kotlin Android Basics", url: "https://www.youtube.com/embed/F9UC9DY-vIU", thumbnail: "https://img.youtube.com/vi/F9UC9DY-vIU/0.jpg" }
-			
-            // Page 3
-			{ title: "Tutorial HTML", url: "https://www.youtube.com/embed/dD2EISBDjWM", thumbnail: "https://img.youtube.com/vi/dD2EISBDjWM/0.jpg" },
-            { title: "Belajar CSS", url: "https://www.youtube.com/embed/1PnVor36_40", thumbnail: "https://img.youtube.com/vi/1PnVor36_40/0.jpg" },
-            { title: "JavaScript Dasar", url: "https://www.youtube.com/embed/W6NZfCO5SIk", thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg" },
-            { title: "ReactJS Tutorial", url: "https://www.youtube.com/embed/N3AkSS5hXMA", thumbnail: "https://img.youtube.com/vi/N3AkSS5hXMA/0.jpg" },
-            { title: "NodeJS Dasar", url: "https://www.youtube.com/embed/TlB_eWDSMt4", thumbnail: "https://img.youtube.com/vi/TlB_eWDSMt4/0.jpg" },
-            { title: "MongoDB Introduction", url: "https://www.youtube.com/embed/oSIv-E60NiU", thumbnail: "https://img.youtube.com/vi/oSIv-E60NiU/0.jpg" },
-            { title: "ExpressJS Crash Course", url: "https://www.youtube.com/embed/L72fhGm1tfE", thumbnail: "https://img.youtube.com/vi/L72fhGm1tfE/0.jpg" },
-            { title: "Python Tutorial", url: "https://www.youtube.com/embed/rfscVS0vtbw", thumbnail: "https://img.youtube.com/vi/rfscVS0vtbw/0.jpg" },
-            { title: "Django Crash Course", url: "https://www.youtube.com/embed/F5mRW0jo-U4", thumbnail: "https://img.youtube.com/vi/F5mRW0jo-U4/0.jpg" },
-            { title: "Flask Web Development", url: "https://www.youtube.com/embed/MwZwr5Tvyxo", thumbnail: "https://img.youtube.com/vi/MwZwr5Tvyxo/0.jpg" }
+            // PAGE 2
+            { title: "Python Basics", url: "https://www.youtube.com/embed/rfscVS0vtbw", thumbnail: "https://img.youtube.com/vi/rfscVS0vtbw/0.jpg" },
+            { title: "Django Basics", url: "https://www.youtube.com/embed/F5mRW0jo-U4", thumbnail: "https://img.youtube.com/vi/F5mRW0jo-U4/0.jpg" },
+            { title: "Flask Basics", url: "https://www.youtube.com/embed/MwZwr5Tvyxo", thumbnail: "https://img.youtube.com/vi/MwZwr5Tvyxo/0.jpg" },
+            { title: "NodeJS Basics", url: "https://www.youtube.com/embed/TlB_eWDSMt4", thumbnail: "https://img.youtube.com/vi/TlB_eWDSMt4/0.jpg" },
+
+            // Tambahkan lebih banyak video untuk PAGE 3 dan PAGE 4
         ];
 
         function displayVideos() {
