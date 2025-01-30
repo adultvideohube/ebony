@@ -1,55 +1,255 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Pagination</title>
+    <title>Video Explorer</title>
     <style>
-        .container { display: flex; flex-wrap: wrap; gap: 20px; }
-        .video-item { cursor: pointer; text-align: center; }
-        .video-item img { width: 200px; height: 120px; }
-        .pagination { margin-top: 20px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+        }
+        .search-container {
+            margin: 1rem auto;
+        }
+        .search-container input {
+            padding: 0.5rem;
+            width: 300px;
+            font-size: 1rem;
+        }
+        .search-container button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .ad-container {
+            margin: 1rem 0;
+            background-color: #ddd;
+            padding: 1rem;
+        }
+        .container {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .video-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            cursor: pointer;
+            padding: 1rem;
+        }
+        .video-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .pagination {
+            margin: 1rem 0;
+        }
+        .pagination button {
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            cursor: pointer;
+        }
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            z-index: 1000;
+        }
+        #modal-content {
+            background: #222;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 900px;
+            width: 90%;
+            position: relative;
+        }
+        #modal iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+        }
+        .ad-section {
+            margin-top: 1rem;
+            background-color: #444;
+            padding: 1rem;
+            border-radius: 8px;
+            color: white;
+        }
+        #modal button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #e50914;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Video Explorer</h1>
+    </header>
+    <div class="ad-container"><style type="text/css">
+  .mobileShow {display: none;}
+
+  /* Smartphone Portrait and Landscape */
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){ 
+      .mobileShow {display: inline;}
+  }
+  .mobileHide { display: inline; }
+
+  /* Smartphone Portrait and Landscape */
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){
+     .mobileHide { display: none;}
+  }
+</style>
+
+     <div class="mobileShow">
+<center><script type="text/javascript">
+	atOptions = {
+		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
+<div class="mobileHide"><center><script type="text/javascript">
+	atOptions = {
+		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center></div>
+
+<script type='text/javascript' src='//identicalprofile.com/26/0e/a6/260ea6a6ea8b17c3cc8804c83f0fdc37.js'></script></div>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search videos...">
+        <button onclick="searchVideos()">Search</button>
+    </div>
     <div class="container" id="video-container"></div>
     <div class="pagination">
         <button onclick="prevPage()">Previous</button>
         <span id="page-number">1</span>
         <button onclick="nextPage()">Next</button>
     </div>
+    <div id="modal">
+        <div id="modal-content">
+            <button onclick="closeModal()">Close</button>
+            <iframe id="modal-video" src="" frameborder="0" allowfullscreen></iframe>
+            <div class="ad-section"><style type="text/css">
+  .mobileShow {display: none;}
+
+  /* Smartphone Portrait and Landscape */
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){ 
+      .mobileShow {display: inline;}
+  }
+  .mobileHide { display: inline; }
+
+  /* Smartphone Portrait and Landscape */
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){
+     .mobileHide { display: none;}
+  }
+</style>
+
+     <div class="mobileShow">
+<center><script type="text/javascript">
+	atOptions = {
+		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
+<div class="mobileHide"><center><script type="text/javascript">
+	atOptions = {
+		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center></div></div>
+        </div>
+    </div>
 
     <script>
-        const videos = [
-            { title: "Video 1", url: "https://example.com/1", thumbnail: "thumb1.jpg" },
-            { title: "Video 2", url: "https://example.com/2", thumbnail: "thumb2.jpg" },
-            { title: "Video 3", url: "https://example.com/3", thumbnail: "thumb3.jpg" },
-            { title: "Video 4", url: "https://example.com/4", thumbnail: "thumb4.jpg" },
-            { title: "Video 5", url: "https://example.com/5", thumbnail: "thumb5.jpg" },
-            { title: "Video 6", url: "https://example.com/6", thumbnail: "thumb6.jpg" },
-            { title: "Video 7", url: "https://example.com/7", thumbnail: "thumb7.jpg" },
-            { title: "Video 8", url: "https://example.com/8", thumbnail: "thumb8.jpg" },
-            { title: "Video 9", url: "https://example.com/9", thumbnail: "thumb9.jpg" },
-            { title: "Video 10", url: "https://example.com/10", thumbnail: "thumb10.jpg" },
-            { title: "Video 11", url: "https://example.com/11", thumbnail: "thumb11.jpg" },
-            { title: "Video 12", url: "https://example.com/12", thumbnail: "thumb12.jpg" },
-            { title: "Video 13", url: "https://example.com/13", thumbnail: "thumb13.jpg" },
-            { title: "Video 14", url: "https://example.com/14", thumbnail: "thumb14.jpg" },
-            { title: "Video 15", url: "https://example.com/15", thumbnail: "thumb15.jpg" },
-            { title: "Video 16", url: "https://example.com/16", thumbnail: "thumb16.jpg" },
-            { title: "Video 17", url: "https://example.com/17", thumbnail: "thumb17.jpg" },
-            { title: "Video 18", url: "https://example.com/18", thumbnail: "thumb18.jpg" },
-            { title: "Video 19", url: "https://example.com/19", thumbnail: "thumb19.jpg" },
-            { title: "Video 20", url: "https://example.com/20", thumbnail: "thumb20.jpg" },
-            { title: "Video 21", url: "https://example.com/21", thumbnail: "thumb21.jpg" },
-            { title: "Video 22", url: "https://example.com/22", thumbnail: "thumb22.jpg" },
-            { title: "Video 23", url: "https://example.com/23", thumbnail: "thumb23.jpg" },
-            { title: "Video 24", url: "https://example.com/24", thumbnail: "thumb24.jpg" },
-            { title: "Video 25", url: "https://example.com/25", thumbnail: "thumb25.jpg" }
-        ];
-
         let currentPage = 1;
-        const videosPerPage = 5;
+        const videosPerPage = 10;
+        
+        const videos = [
+            { title: "Black milf with a huge fat ass fucked by a big black cock", url: "https://drive.google.com/file/d/1-6cWNJcP-f7s5Klsm9AqxANYvnLFJi8u/preview", thumbnail: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXe2u4P3ChC_Ym_cmkNgFORSrvv-Bi6vVzzuEuZzq_1xwNL7djm04khSwoRZ9W28AF61XlfszKpZHzLblQRqMmfrr2gRPHjTPmEnr3Jsh-NTiM5Xzb_iqXc1pn47EDOwuI7gEeOxUtqrkk7lmNjpswmYJeul64Pa7tC5xtdQGjYhIdQeYuFP_DlxhlKmg/s620/Screenshot%202025-01-31%20055405.png" },
+            { title: "Hot japan girl Minori Ichikawa gets dick in her tight pussy", url: "https://drive.google.com/file/d/1k8bZwxowcDOibqhi8DjqMMJaMvysfh-w/preview", thumbnail: "https://img.youtube.com/vi/1PnVor36_40/0.jpg" },
+            { title: "After kissing her, she's ready to get her pants all wet. She is too naughty!", url: "https://drive.google.com/file/d/14nUTHTs3zlSqNc2JSZ0vgeqbGgl7WYlb/preview", thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg" },
+            { title: "My young stepsister and her friend fucked me before the party", url: "https://drive.google.com/file/d/1Fem5rZWu9FAF2r-9XzFaAlJXrdizJamK/preview", thumbnail: "https://img.youtube.com/vi/N3AkSS5hXMA/0.jpg" },
+            { title: "A new family relationship begins with the mother's remarriage", url: "https://drive.google.com/file/d/1kzGZ691rgIAdDryLWtfpIiqk3iW9eWUm/preview", thumbnail: "https://img.youtube.com/vi/TlB_eWDSMt4/0.jpg" },
+            { title: "Small tits girl feels estrus to be seen tits by others", url: "https://drive.google.com/file/d/1qJDxfrnyvzRcd7wPmtWk88J-VMJhqHsO/preview", thumbnail: "https://img.youtube.com/vi/FXpIoQ_rT_c/0.jpg" },
+            { title: "You can see the inside of the! Beautiful Girl", url: "https://drive.google.com/file/d/1hLjZHqZnx-K4C23Sg3jcC8IPduP9a0er/preview", thumbnail: "https://img.youtube.com/vi/rfscVS0vtbw/0.jpg" },
+            { title: "Coming soon from Elegant Angel, It's a Black Family Thing", url: "https://drive.google.com/file/d/1BaZre8NquuV2ueIcvGvgLPayPuxOOkEn/preview", thumbnail: "https://img.youtube.com/vi/F5mRW0jo-U4/0.jpg" },
+            { title: "Sucking Big Czech on My Vacation in Prague", url: "https://drive.google.com/file/d/1358VleB3juA7OiUaLODgBcwROp6lsZtD/preview", thumbnail: "https://img.youtube.com/vi/MwZwr5Tvyxo/0.jpg" },
+            { title: "VueJS Basics", url: "https://www.youtube.com/embed/FXpIoQ_rT_c", thumbnail: "https://img.youtube.com/vi/FXpIoQ_rT_c/0.jpg" },
+            { title: "AngularJS Crash Course", url: "https://www.youtube.com/embed/k5E2AVpwsko", thumbnail: "https://img.youtube.com/vi/k5E2AVpwsko/0.jpg" },
+            { title: "Bootstrap Tutorial", url: "https://www.youtube.com/embed/qf7dkrce-mQ", thumbnail: "https://img.youtube.com/vi/qf7dkrce-mQ/0.jpg" },
+            { title: "PHP for Beginners", url: "https://www.youtube.com/embed/O_9u1P5YjVc", thumbnail: "https://img.youtube.com/vi/O_9u1P5YjVc/0.jpg" },
+            { title: "Laravel Crash Course", url: "https://www.youtube.com/embed/ImtZ5yENzgE", thumbnail: "https://img.youtube.com/vi/ImtZ5yENzgE/0.jpg" },
+            { title: "MySQL Tutorial", url: "https://www.youtube.com/embed/HXV3zeQKqGY", thumbnail: "https://img.youtube.com/vi/HXV3zeQKqGY/0.jpg" },
+            { title: "C++ Programming Basics", url: "https://www.youtube.com/embed/vLnPwxZdW4Y", thumbnail: "https://img.youtube.com/vi/vLnPwxZdW4Y/0.jpg" },
+            { title: "Java Programming", url: "https://www.youtube.com/embed/eIrMbAQSU34", thumbnail: "https://img.youtube.com/vi/eIrMbAQSU34/0.jpg" },
+            { title: "Swift iOS Development", url: "https://www.youtube.com/embed/comQ1-x2a1Q", thumbnail: "https://img.youtube.com/vi/comQ1-x2a1Q/0.jpg" },
+            { title: "Kotlin Android Basics", url: "https://www.youtube.com/embed/F9UC9DY-vIU", thumbnail: "https://img.youtube.com/vi/F9UC9DY-vIU/0.jpg" }
+			{ title: "Tutorial HTML", url: "https://www.youtube.com/embed/dD2EISBDjWM", thumbnail: "https://img.youtube.com/vi/dD2EISBDjWM/0.jpg" },
+            { title: "Belajar CSS", url: "https://www.youtube.com/embed/1PnVor36_40", thumbnail: "https://img.youtube.com/vi/1PnVor36_40/0.jpg" },
+            { title: "JavaScript Dasar", url: "https://www.youtube.com/embed/W6NZfCO5SIk", thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg" },
+            { title: "ReactJS Tutorial", url: "https://www.youtube.com/embed/N3AkSS5hXMA", thumbnail: "https://img.youtube.com/vi/N3AkSS5hXMA/0.jpg" },
+            { title: "NodeJS Dasar", url: "https://www.youtube.com/embed/TlB_eWDSMt4", thumbnail: "https://img.youtube.com/vi/TlB_eWDSMt4/0.jpg" },
+            { title: "MongoDB Introduction", url: "https://www.youtube.com/embed/oSIv-E60NiU", thumbnail: "https://img.youtube.com/vi/oSIv-E60NiU/0.jpg" },
+            { title: "ExpressJS Crash Course", url: "https://www.youtube.com/embed/L72fhGm1tfE", thumbnail: "https://img.youtube.com/vi/L72fhGm1tfE/0.jpg" },
+            { title: "Python Tutorial", url: "https://www.youtube.com/embed/rfscVS0vtbw", thumbnail: "https://img.youtube.com/vi/rfscVS0vtbw/0.jpg" },
+            { title: "Django Crash Course", url: "https://www.youtube.com/embed/F5mRW0jo-U4", thumbnail: "https://img.youtube.com/vi/F5mRW0jo-U4/0.jpg" },
+            { title: "Flask Web Development", url: "https://www.youtube.com/embed/MwZwr5Tvyxo", thumbnail: "https://img.youtube.com/vi/MwZwr5Tvyxo/0.jpg" }
+        ];
 
         function displayVideos() {
             const container = document.getElementById("video-container");
@@ -57,12 +257,19 @@
             const end = start + videosPerPage;
             const paginatedVideos = videos.slice(start, end);
             container.innerHTML = paginatedVideos.map(video => `
-                <div class="video-item" onclick="window.open('${video.url}', '_blank')">
+                <div class="video-item" onclick="openModal('${video.url}')">
                     <img src="${video.thumbnail}" alt="${video.title}">
                     <h3>${video.title}</h3>
                 </div>
             `).join('');
             document.getElementById("page-number").textContent = currentPage;
+        }
+
+        function nextPage() {
+            if (currentPage * videosPerPage < videos.length) {
+                currentPage++;
+                displayVideos();
+            }
         }
 
         function prevPage() {
@@ -72,14 +279,19 @@
             }
         }
 
-        function nextPage() {
-            if (currentPage < Math.ceil(videos.length / videosPerPage)) {
-                currentPage++;
-                displayVideos();
-            }
+        function openModal(videoUrl) {
+            document.getElementById("modal-video").src = videoUrl;
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+            document.getElementById("modal-video").src = "";
         }
 
         displayVideos();
     </script>
 </body>
 </html>
+
+masih tidak bisa menampilkan daftar video
