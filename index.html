@@ -44,8 +44,7 @@
 
         <!-- Video Player -->
         <div class="video-player">
-            <iframe width="560" height="315" src="https://www.pornhub.com/view_video.php?viewkey=66a9ded1d35c5" title="Sex on a public beach in the rain!
-" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe id="pornhub-video" src="" allowfullscreen></iframe>
         </div>
 
         <style type="text/css">
@@ -107,26 +106,26 @@ hs.src = ('//s10.histats.com/js15_as.js');
     </div>
 
     <script>
-        const apiKey = "apify_api_e55hslUhm1mNjaLjOQiJg3xwMsRuQh2lFSjL"; // Replace with your Pornhub API Key
-        const videoId = "AP3hkj1D4QlII06A9"; // Replace with a valid video ID
+import { ApifyClient } from "apify-client";
 
-        const fetchVideoUrl = async () => {
-            try {
-                const response = await fetch(`https://www.pornhub.com/api/play?key=${apiKey}&id=${videoId}`);
-                const data = await response.json();
+const apifyClient = new ApifyClient({ token: "apify_api_e55hslUhm1mNjaLjOQiJg3xwMsRuQh2lFSjL" });
 
-                if (data && data.url) {
-                    document.getElementById('pornhub-video').src = data.url;
-                } else {
-                    console.error('Failed to fetch video URL:', data);
-                }
-            } catch (error) {
-                console.error('Error fetching video URL:', error);
-            }
-        };
+// Define the input for the Actor
+const actorInput = {
+    searchStringsArray: ["ramen"],
+    locationQuery: "New York, USA",
+    maxCrawledPlacesPerSearch: 10,
+    language: "en",
+};
 
-        // Fetch video URL on page load
-        fetchVideoUrl();
+// Run an Actor with an input
+console.log("Running the Actor...");
+const actorRun = await apifyClient
+    .actor("compass/crawler-google-places")
+    .start(actorInput);
+
+console.log(`🚀 Actor was started`);
+console.log(`💾 Check your run here: https://console.apify.com/actors/runs/${actorRun.id}`);
     </script>
 </body>
 </html>
