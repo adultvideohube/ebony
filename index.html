@@ -3,111 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pornhub Video Player</title>
+    <title>Video Explorer</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            text-align: center;
         }
         header {
             background-color: #333;
             color: white;
-            padding: 1rem 2rem;
-            text-align: center;
+            padding: 1rem;
         }
         .container {
             padding: 2rem;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1.5rem;
-            text-align: center;
         }
-        .movie {
+        .video-item {
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            cursor: pointer;
             padding: 1rem;
         }
-        .movie iframe {
-            width: 100%;
-            height: 200px;
-            border-radius: 8px;
-        }
-        .movie h3 {
+        .video-item h3 {
             font-size: 1.2rem;
             margin: 0.5rem 0;
+            color: #333;
         }
-        .ad-container {
-            text-align: center;
-            margin: 2rem 0;
+        .video-item:hover {
+            background-color: #ddd;
+        }
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            z-index: 1000;
+        }
+        #modal-content {
+            background: #222;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 900px;
+            width: 90%;
+            position: relative;
+        }
+        #modal iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+        }
+        #modal button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #e50914;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #modal button:hover {
+            background-color: #f30c1d;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Enjoy premium content!</h1>
+        <h1>Video Explorer</h1>
     </header>
-    <div class="ad-container">
-
-<style type="text/css">
-  .mobileShow {display: none;}
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){ 
-      .mobileShow {display: inline;}
-  }
-  .mobileHide { display: inline; }
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){
-     .mobileHide { display: none;}
-  }
-</style>
-
-     <div class="mobileShow">
-<center><script type="text/javascript">
-	atOptions = {
-		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
-<div class="mobileHide"><center><script type="text/javascript">
-	atOptions = {
-		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center></div>
-
-<script type='text/javascript' src='//identicalprofile.com/26/0e/a6/260ea6a6ea8b17c3cc8804c83f0fdc37.js'></script>
-	
+    <div class="container" id="video-container">
+        <!-- Video items will be displayed here -->
     </div>
-    <div class="container">
-        <div class="movie">
-            <h3>Movie 1</h3>
-            <iframe allow="autoplay" height="360" src="https://drive.google.com/file/d/1fQqMxposP4dx4BAK23RprTjBtn_tBVPb/preview" width="560"></iframe>
-        </div>
-        <div class="movie">
-            <h3>Movie 2</h3>
-            <iframe allow="autoplay" src="https://drive.google.com/file/d/1aBcDeFgHiJkLmNoPqRsTtUvWxYzZ/preview"></iframe>
-        </div>
-        <div class="movie">
-            <h3>Movie 3</h3>
-            <iframe allow="autoplay" src="https://drive.google.com/file/d/1XyZpAbCdEfGhIjKlmNoPqRsTtUvWx/preview"></iframe>
+    <div id="modal">
+        <div id="modal-content">
+            <button onclick="closeModal()">Close</button>
+            <iframe id="modal-video" src="" frameborder="0" allowfullscreen></iframe>
+            <button onclick="goBack()">Back to Videos</button>
         </div>
     </div>
+    <script>
+        const videos = [
+            { title: "Mena carlisle loves that big black jovan jordan dick in her tight pussy", url: "https://drive.google.com/file/d/1fQqMxposP4dx4BAK23RprTjBtn_tBVPb/preview" },
+            { title: "STEPSISTER WITH A LOT OF DOUBTS ABOUT SEX", url: "https://drive.google.com/file/d/1wsI9wGO0xuLh1b0njsopMsUhk7joTwkP/preview" }
+        ];
+
+        function displayVideos() {
+            const container = document.getElementById("video-container");
+            container.innerHTML = videos.map(video => `
+                <div class="video-item" onclick="openModal('${video.url}')">
+                    <h3>${video.title}</h3>
+                </div>
+            `).join('');
+        }
+
+        function openModal(videoUrl) {
+            document.getElementById("modal-video").src = videoUrl;
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+            document.getElementById("modal-video").src = "";
+        }
+
+        function goBack() {
+            closeModal();
+        }
+
+        displayVideos();
+    </script>
 </body>
 </html>
