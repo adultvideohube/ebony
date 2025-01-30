@@ -65,11 +65,49 @@
         .pagination button {
             padding: 0.5rem 1rem;
             margin: 0 0.5rem;
-            font-size: 1rem;
-            background-color: #333;
+        }
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            z-index: 1000;
+        }
+        #modal-content {
+            background: #222;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 900px;
+            width: 90%;
+            position: relative;
+        }
+        #modal iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+        }
+        .ad-section {
+            margin-top: 1rem;
+            background-color: #444;
+            padding: 1rem;
+            border-radius: 8px;
+            color: white;
+        }
+        #modal button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #e50914;
             color: white;
             border: none;
             cursor: pointer;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -77,12 +115,10 @@
     <header>
         <h1>Video Explorer</h1>
     </header>
+    <div class="ad-container">Adsterra Ad Here</div>
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search for a video...">
+        <input type="text" id="search" placeholder="Search videos...">
         <button onclick="searchVideos()">Search</button>
-    </div>
-    <div class="ad-container">
-        Adsterra Ad Here
     </div>
     <div class="container" id="video-container"></div>
     <div class="pagination">
@@ -90,55 +126,65 @@
         <span id="page-number">1</span>
         <button onclick="nextPage()">Next</button>
     </div>
+    <div id="modal">
+        <div id="modal-content">
+            <button onclick="closeModal()">Close</button>
+            <iframe id="modal-video" src="" frameborder="0" allowfullscreen></iframe>
+            <div class="ad-section">Adsterra Ad Here</div>
+        </div>
+    </div>
     <script>
-        const videos = [
-            { title: "Sample Video 1", url: "https://drive.google.com/file/d/1fQqMxposP4dx4BAK23RprTjBtn_tBVPb/preview", thumbnail: "https://via.placeholder.com/200" },
-            { title: "Sample Video 2", url: "https://drive.google.com/file/d/1Abc1234Efgh5678Ijkl9MnopQrstu/preview", thumbnail: "https://via.placeholder.com/200" },
-            { title: "Sample Video 3", url: "https://drive.google.com/file/d/1XYZ1234AABBCCDD/preview", thumbnail: "https://via.placeholder.com/200" }
-        ];
         let currentPage = 1;
         const videosPerPage = 10;
-
-        function displayVideos(filteredList = videos) {
+        const videos = Array.from({ length: 50 }, (_, i) => ({
+            title: `Video ${i + 1}`,
+            url: `https://via.placeholder.com/200`,
+            thumbnail: `https://via.placeholder.com/200`
+        }));
+        function displayVideos() {
             const container = document.getElementById("video-container");
-            container.innerHTML = "";
             const start = (currentPage - 1) * videosPerPage;
             const end = start + videosPerPage;
-            const paginatedVideos = filteredList.slice(start, end);
-            
-            paginatedVideos.forEach(video => {
-                const videoItem = document.createElement("div");
-                videoItem.classList.add("video-item");
-                videoItem.innerHTML = `
+            const paginatedVideos = videos.slice(start, end);
+            container.innerHTML = paginatedVideos.map(video => `
+                <div class="video-item" onclick="openModal('${video.url}')">
                     <img src="${video.thumbnail}" alt="${video.title}">
-                    <h3><a href="${video.url}" target="_blank">${video.title}</a></h3>
-                `;
-                container.appendChild(videoItem);
-            });
+                    <h3>${video.title}</h3>
+                </div>
+            `).join('');
             document.getElementById("page-number").textContent = currentPage;
         }
-
+        function openModal(videoUrl) {
+            document.getElementById("modal-video").src = videoUrl;
+            document.getElementById("modal").style.display = "flex";
+        }
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+            document.getElementById("modal-video").src = "";
+        }
+        function searchVideos() {
+            const query = document.getElementById("search").value.toLowerCase();
+            if (!query) return displayVideos();
+            const filteredVideos = videos.filter(v => v.title.toLowerCase().includes(query));
+            document.getElementById("video-container").innerHTML = filteredVideos.map(video => `
+                <div class="video-item" onclick="openModal('${video.url}')">
+                    <img src="${video.thumbnail}" alt="${video.title}">
+                    <h3>${video.title}</h3>
+                </div>
+            `).join('');
+        }
         function nextPage() {
-            if (currentPage * videosPerPage < videos.length) {
+            if ((currentPage * videosPerPage) < videos.length) {
                 currentPage++;
                 displayVideos();
             }
         }
-
         function prevPage() {
             if (currentPage > 1) {
                 currentPage--;
                 displayVideos();
             }
         }
-
-        function searchVideos() {
-            const query = document.getElementById("search-input").value.toLowerCase();
-            const filtered = videos.filter(video => video.title.toLowerCase().includes(query));
-            currentPage = 1;
-            displayVideos(filtered);
-        }
-
         displayVideos();
     </script>
 </body>
