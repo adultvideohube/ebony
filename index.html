@@ -97,21 +97,21 @@
             { title: "Sample Video 3", url: "https://drive.google.com/file/d/1XYZ1234AABBCCDD/preview", thumbnail: "https://via.placeholder.com/200" }
         ];
         let currentPage = 1;
-        const videosPerPage = 2;
+        const videosPerPage = 10;
 
-        function displayVideos() {
+        function displayVideos(filteredList = videos) {
             const container = document.getElementById("video-container");
             container.innerHTML = "";
             const start = (currentPage - 1) * videosPerPage;
             const end = start + videosPerPage;
-            const filteredVideos = videos.slice(start, end);
+            const paginatedVideos = filteredList.slice(start, end);
             
-            filteredVideos.forEach(video => {
+            paginatedVideos.forEach(video => {
                 const videoItem = document.createElement("div");
                 videoItem.classList.add("video-item");
                 videoItem.innerHTML = `
                     <img src="${video.thumbnail}" alt="${video.title}">
-                    <h3 onclick="openModal('${video.url}')">${video.title}</h3>
+                    <h3><a href="${video.url}" target="_blank">${video.title}</a></h3>
                 `;
                 container.appendChild(videoItem);
             });
@@ -135,12 +135,8 @@
         function searchVideos() {
             const query = document.getElementById("search-input").value.toLowerCase();
             const filtered = videos.filter(video => video.title.toLowerCase().includes(query));
-            document.getElementById("video-container").innerHTML = filtered.map(video => `
-                <div class="video-item" onclick="openModal('${video.url}')">
-                    <img src="${video.thumbnail}" alt="${video.title}">
-                    <h3>${video.title}</h3>
-                </div>
-            `).join('');
+            currentPage = 1;
+            displayVideos(filtered);
         }
 
         displayVideos();
