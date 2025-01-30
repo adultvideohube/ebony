@@ -136,28 +136,72 @@
     <script>
         let currentPage = 1;
         const videosPerPage = 10;
-        const videos = Array.from({ length: 50 }, (_, i) => ({
-            { title: "Mena carlisle loves that big black jovan jordan dick in her tight pussy", url: "https://drive.google.com/file/d/1fQqMxposP4dx4BAK23RprTjBtn_tBVPb/preview", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-            { title: "STEPSISTER WITH A LOT OF DOUBTS ABOUT SEX", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-            { title: "Tutorial 3", url: "https://drive.google.com/file/d/1wsI9wGO0xuLh1b0njsopMsUhk7joTwkP/preview", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 4", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 5", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 6", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 7", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 8", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 9", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 10", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 11", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 12", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 13", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 14", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 15", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 16", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 17", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 18", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 19", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-			{ title: "Tutorial 20", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-        }));
+        const videos = [
+    {
+        title: "Mena carlisle loves that big black jovan jordan dick in her tight pussy",
+        url: "https://drive.google.com/file/d/1fQqMxposP4dx4BAK23RprTjBtn_tBVPb/preview",
+        thumbnail: "https://image.tmdb.org/t/p/original/d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg"
+    },
+    {
+        title: "Belajar 2",
+        url: "https://www.youtube.com/embed/1PnVor36_40",
+        thumbnail: "https://img.youtube.com/vi/1PnVor36_40/0.jpg"
+    },
+    {
+        title: "JavaScript 3",
+        url: "https://www.youtube.com/embed/W6NZfCO5SIk",
+        thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg"
+    }
+        title: "Tutorial 4",
+        url: "https://www.youtube.com/embed/dD2EISBDjWM",
+        thumbnail: "https://img.youtube.com/vi/dD2EISBDjWM/0.jpg"
+    },
+    {
+        title: "Belajar 5",
+        url: "https://www.youtube.com/embed/1PnVor36_40",
+        thumbnail: "https://img.youtube.com/vi/1PnVor36_40/0.jpg"
+    },
+    {
+        title: "JavaScript 6",
+        url: "https://www.youtube.com/embed/W6NZfCO5SIk",
+        thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg"
+    }
+        title: "Tutorial 7",
+        url: "https://www.youtube.com/embed/dD2EISBDjWM",
+        thumbnail: "https://img.youtube.com/vi/dD2EISBDjWM/0.jpg"
+    },
+    {
+        title: "Belajar 8",
+        url: "https://www.youtube.com/embed/1PnVor36_40",
+        thumbnail: "https://img.youtube.com/vi/1PnVor36_40/0.jpg"
+    },
+    {
+        title: "JavaScript 9",
+        url: "https://www.youtube.com/embed/W6NZfCO5SIk",
+        thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg"
+	},
+    {
+        title: "JavaScript 10",
+        url: "https://www.youtube.com/embed/W6NZfCO5SIk",
+        thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg"
+	},
+    {
+        title: "JavaScript 11",
+        url: "https://www.youtube.com/embed/W6NZfCO5SIk",
+        thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg"
+	},
+    {
+        title: "JavaScript 12",
+        url: "https://www.youtube.com/embed/W6NZfCO5SIk",
+        thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg"
+	},
+    {
+        title: "JavaScript 13",
+        url: "https://www.youtube.com/embed/W6NZfCO5SIk",
+        thumbnail: "https://img.youtube.com/vi/W6NZfCO5SIk/0.jpg"
+    }
+];
+
         function displayVideos() {
             const container = document.getElementById("video-container");
             const start = (currentPage - 1) * videosPerPage;
@@ -209,7 +253,3 @@
 
 
 ================
-const videos = [
-    { title: "Tutorial HTML", url: "https://www.youtube.com/embed/XXXXX", thumbnail: "https://img.youtube.com/vi/XXXXX/0.jpg" },
-    { title: "Belajar CSS", url: "https://www.youtube.com/embed/YYYYY", thumbnail: "https://img.youtube.com/vi/YYYYY/0.jpg" }
-];
