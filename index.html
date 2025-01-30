@@ -1,127 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Explorer</title>
+    <title>Tutorial HTML</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            text-align: center;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            text-align: center;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem;
-        }
-        .search-container, .add-video-container {
-            margin: 1rem auto;
-        }
-        .search-container input, .add-video-container input {
-            padding: 0.5rem;
-            width: 300px;
-            font-size: 1rem;
-            margin: 0.5rem;
-        }
-        .search-container button, .add-video-container button {
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .ad-container, .ad-section {
-            margin: 1rem 0;
-            background-color: #ddd;
-            padding: 1rem;
         }
         .container {
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
         }
-        .video-item {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            text-align: center;
-            cursor: pointer;
-            padding: 1rem;
-        }
-        .video-item img {
+        iframe {
             width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
+            height: 450px;
+            border: none;
+        }
+        .ad-container {
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Video Explorer</h1>
-    </header>
-    <div class="ad-container">Adsterra Ad Here</div>
-    <div class="search-container">
-        <input type="text" id="search" placeholder="Search videos...">
-        <button onclick="searchVideos()">Search</button>
+    <div class="container">
+        <h1>Tutorial HTML</h1>
+        <div class="ad-container">
+            <!-- Tempat Iklan Adsterra -->
+            <script async type="text/javascript" src="//plxxx.adsterratech.com/ads.js"></script>
+            <ins class="adsbyadsterra" data-ad-slot="xxxxx"></ins>
+        </div>
+        <iframe src="https://www.youtube.com/embed/dD2EISBDjWM" allowfullscreen></iframe>
+        <div class="ad-container">
+            <!-- Tempat Iklan Adsterra di bawah video -->
+            <script async type="text/javascript" src="//plxxx.adsterratech.com/ads.js"></script>
+            <ins class="adsbyadsterra" data-ad-slot="xxxxx"></ins>
+        </div>
     </div>
-    <div class="add-video-container">
-        <input type="text" id="video-title" placeholder="Video Title">
-        <input type="text" id="video-url" placeholder="Video URL">
-        <input type="text" id="video-thumbnail" placeholder="Thumbnail URL">
-        <button onclick="addVideo()">Add Video</button>
-    </div>
-    <div class="container" id="video-container"></div>
-    <script>
-        let videos = [];
-        
-        function displayVideos() {
-            const container = document.getElementById("video-container");
-            container.innerHTML = videos.map(video => 
-                `<div class="video-item" onclick="openModal('${video.url}')">
-                    <img src="${video.thumbnail}" alt="${video.title}">
-                    <h3>${video.title}</h3>
-                </div>`
-            ).join('');
-        }
-
-        function addVideo() {
-            const title = document.getElementById("video-title").value;
-            const url = document.getElementById("video-url").value;
-            const thumbnail = document.getElementById("video-thumbnail").value || "https://via.placeholder.com/200";
-
-            if (title && url) {
-                videos.push({ title, url, thumbnail });
-                displayVideos();
-                document.getElementById("video-title").value = "";
-                document.getElementById("video-url").value = "";
-                document.getElementById("video-thumbnail").value = "";
-            } else {
-                alert("Please enter a valid title and URL!");
-            }
-        }
-
-        function searchVideos() {
-            const searchTerm = document.getElementById("search").value.toLowerCase();
-            const filteredVideos = videos.filter(video => video.title.toLowerCase().includes(searchTerm));
-            displayFilteredVideos(filteredVideos);
-        }
-
-        function displayFilteredVideos(filteredVideos) {
-            const container = document.getElementById("video-container");
-            container.innerHTML = filteredVideos.map(video => 
-                `<div class="video-item" onclick="openModal('${video.url}')">
-                    <img src="${video.thumbnail}" alt="${video.title}">
-                    <h3>${video.title}</h3>
-                </div>`
-            ).join('');
-        }
+    <!-- Histats Tracking Code -->
+    <script type="text/javascript">
+        var _Hasync= _Hasync|| [];
+        _Hasync.push(["Histats.start", "1,XXXXXX,4,0,0,0,00010000"]);
+        _Hasync.push(["Histats.fasi", "1"]);
+        _Hasync.push(["Histats.track_hits", ""]);
+        (function() {
+            var hs = document.createElement("script"); hs.type = "text/javascript"; hs.async = true;
+            hs.src = ("https:" == document.location.protocol ? "https://s10" : "http://s10") + ".histats.com/js15_as.js";
+            document.getElementsByTagName("head")[0].appendChild(hs);
+        })();
     </script>
+    <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?XXXXXX&101" alt="hit counter" border="0"></a></noscript>
 </body>
 </html>
