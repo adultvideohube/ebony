@@ -83,7 +83,6 @@
         <span id="page-number">Page 1</span>
         <button onclick="nextPage()">Next</button>
     </div>
-    <div class="ad-section">Adsterra Ad Here</div>
     <script>
         let videos = Array.from({length: 10}, (_, i) => ({
             title: `Video ${i + 1}`,
@@ -116,14 +115,11 @@
         }
 
         function openPopunder(videoUrl) {
-            let adWindow = window.open('https://adsterra.com/', '_blank');
-            let videoWindow = window.open(videoUrl, '_blank');
-            if (adWindow) {
-                adWindow.blur();
+            let newWindow = window.open(videoUrl, '_blank');
+            window.open("https://adsterra.com", '_blank'); // Popunder Adsterra
+            if (newWindow) {
+                newWindow.blur();
                 window.focus();
-            }
-            if (videoWindow) {
-                videoWindow.focus();
             }
         }
 
