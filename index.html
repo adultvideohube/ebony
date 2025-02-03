@@ -34,6 +34,9 @@
             border: none;
             cursor: pointer;
         }
+        .search-container button:hover {
+            background-color: #555;
+        }
         .container {
             padding: 2rem;
             display: grid;
@@ -57,6 +60,26 @@
             font-size: 1.2rem;
             margin: 0.5rem;
         }
+        .movie p {
+            color: #555;
+            margin: 0.5rem;
+        }
+        .pagination {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .pagination button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background-color: #e50914;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .pagination button:hover {
+            background-color: #f30c1d;
+        }
     </style>
 </head>
 <body>
@@ -70,35 +93,48 @@
     <div class="container" id="movies-container">
         <!-- Movies will be displayed here -->
     </div>
-    
+    <div class="pagination">
+        <button onclick="nextPage()">Next Page</button>
+    </div>
+
     <script>
-        const movies = [
+        let currentPage = 1;
+        const moviesData = [
             { title: "JUDUL 1", driveId: "YOUR_DRIVE_FILE_ID_1", thumbnail: "YOUR_THUMBNAIL_URL_1" },
             { title: "JUDUL 2", driveId: "YOUR_DRIVE_FILE_ID_2", thumbnail: "YOUR_THUMBNAIL_URL_2" },
             { title: "JUDUL 3", driveId: "YOUR_DRIVE_FILE_ID_3", thumbnail: "YOUR_THUMBNAIL_URL_3" }
         ];
-        
-        function displayMovies(movieList) {
+
+        function displayMovies() {
             const moviesContainer = document.getElementById('movies-container');
-            moviesContainer.innerHTML = movieList.map(movie => `
-                <div class="movie" onclick="watchMovie('${movie.driveId}')">
+            moviesContainer.innerHTML = moviesData.map(movie => `
+                <div class="movie">
                     <img src="${movie.thumbnail}" alt="${movie.title}">
                     <h3>${movie.title}</h3>
+                    <a href="https://drive.google.com/file/d/${movie.driveId}/view" target="_blank">Watch Now</a>
                 </div>
             `).join('');
         }
-        
-        function watchMovie(driveId) {
-            window.open(`https://drive.google.com/file/d/${driveId}/view`, '_blank');
+
+        function nextPage() {
+            currentPage++;
+            console.log("Loading next page: ", currentPage);
+            displayMovies();
         }
-        
+
         function searchMovies() {
             const query = document.getElementById('search-input').value.toLowerCase();
-            const filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(query));
-            displayMovies(filteredMovies);
+            const filteredMovies = moviesData.filter(movie => movie.title.toLowerCase().includes(query));
+            document.getElementById('movies-container').innerHTML = filteredMovies.map(movie => `
+                <div class="movie">
+                    <img src="${movie.thumbnail}" alt="${movie.title}">
+                    <h3>${movie.title}</h3>
+                    <a href="https://drive.google.com/file/d/${movie.driveId}/view" target="_blank">Watch Now</a>
+                </div>
+            `).join('');
         }
-        
-        displayMovies(movies);
+
+        displayMovies();
     </script>
 </body>
 </html>
