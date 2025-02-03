@@ -19,7 +19,7 @@
         }
         .search-container {
             text-align: center;
-            margin: 20px;
+            margin: 10px auto; /* Kurangi margin */
         }
         .search-container input {
             padding: 10px;
@@ -36,6 +36,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1.5rem;
+            margin-top: 10px; /* Tambahkan jarak kecil */
         }
         .movie {
             background-color: white;
@@ -96,7 +97,8 @@
         <input type="text" id="search-input" placeholder="Search for a movie...">
         <button onclick="searchMovies()">Search</button>
     </div>
-    <style type="text/css">
+
+<style type="text/css">
   .mobileShow {display: none;}
 
   /* Smartphone Portrait and Landscape */
@@ -136,6 +138,7 @@
 	};
 </script>
 <script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center>
+	
     </div>
     <div class="container" id="movies-container"></div>
     <div class="pagination">
@@ -148,7 +151,8 @@
             <h2 id="modal-title"></h2>
             <iframe id="modal-video" frameborder="0" allowfullscreen></iframe>
             <br>
-            <style type="text/css">
+
+<style type="text/css">
   .mobileShow {display: none;}
 
   /* Smartphone Portrait and Landscape */
@@ -188,6 +192,7 @@
 	};
 </script>
 <script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center>
+			
             </div>
             <button onclick="closeModal()">Close</button>
         </div>
@@ -218,7 +223,7 @@
         ];
 
         let filteredMovies = [...movies];
-        const moviesPerPage = 10;
+        const moviesPerPage = 16;
         let currentPage = 1;
 
         function displayMovies() {
