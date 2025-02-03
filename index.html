@@ -180,70 +180,63 @@
     </div>
     <script>
         const movies = [
-    { title: "Movie 1", driveId: "YOUR_DRIVE_FILE_ID_1", thumbnail: "YOUR_THUMBNAIL_URL_1" },
-    { title: "Movie 2", driveId: "YOUR_DRIVE_FILE_ID_2", thumbnail: "YOUR_THUMBNAIL_URL_2" },
-    { title: "Movie 3", driveId: "YOUR_DRIVE_FILE_ID_3", thumbnail: "YOUR_THUMBNAIL_URL_3" },
-    { title: "Movie 4", driveId: "YOUR_DRIVE_FILE_ID_4", thumbnail: "YOUR_THUMBNAIL_URL_4" },
-    { title: "Movie 5", driveId: "YOUR_DRIVE_FILE_ID_5", thumbnail: "YOUR_THUMBNAIL_URL_5" },
-    { title: "Movie 6", driveId: "YOUR_DRIVE_FILE_ID_6", thumbnail: "YOUR_THUMBNAIL_URL_6" },
-    { title: "Movie 7", driveId: "YOUR_DRIVE_FILE_ID_7", thumbnail: "YOUR_THUMBNAIL_URL_7" },
-    { title: "Movie 8", driveId: "YOUR_DRIVE_FILE_ID_8", thumbnail: "YOUR_THUMBNAIL_URL_8" },
-    { title: "Movie 9", driveId: "YOUR_DRIVE_FILE_ID_9", thumbnail: "YOUR_THUMBNAIL_URL_9" },
-    { title: "Movie 10", driveId: "YOUR_DRIVE_FILE_ID_10", thumbnail: "YOUR_THUMBNAIL_URL_10" }
-];
+            { title: "Movie 1", driveId: "YOUR_DRIVE_FILE_ID_1", thumbnail: "YOUR_THUMBNAIL_URL_1" },
+            { title: "Movie 2", driveId: "YOUR_DRIVE_FILE_ID_2", thumbnail: "YOUR_THUMBNAIL_URL_2" },
+            { title: "Movie 3", driveId: "YOUR_DRIVE_FILE_ID_3", thumbnail: "YOUR_THUMBNAIL_URL_3" },
+            { title: "Movie 4", driveId: "YOUR_DRIVE_FILE_ID_4", thumbnail: "YOUR_THUMBNAIL_URL_4" },
+            { title: "Movie 5", driveId: "YOUR_DRIVE_FILE_ID_5", thumbnail: "YOUR_THUMBNAIL_URL_5" },
+            { title: "Movie 6", driveId: "YOUR_DRIVE_FILE_ID_6", thumbnail: "YOUR_THUMBNAIL_URL_6" },
+			{ title: "Movie 7", driveId: "YOUR_DRIVE_FILE_ID_7", thumbnail: "YOUR_THUMBNAIL_URL_7" },
+			{ title: "Movie 8", driveId: "YOUR_DRIVE_FILE_ID_8", thumbnail: "YOUR_THUMBNAIL_URL_8" },
+			{ title: "Movie 9", driveId: "YOUR_DRIVE_FILE_ID_9", thumbnail: "YOUR_THUMBNAIL_URL_9" },
+			{ title: "Movie 10", driveId: "YOUR_DRIVE_FILE_ID_10", thumbnail: "YOUR_THUMBNAIL_URL_10" },
+			{ title: "Movie 11", driveId: "YOUR_DRIVE_FILE_ID_11", thumbnail: "YOUR_THUMBNAIL_URL_11" },
+			{ title: "Movie 12", driveId: "YOUR_DRIVE_FILE_ID_12", thumbnail: "YOUR_THUMBNAIL_URL_12" },
+			{ title: "Movie 13", driveId: "YOUR_DRIVE_FILE_ID_13", thumbnail: "YOUR_THUMBNAIL_URL_13" },
+			{ title: "Movie 14", driveId: "YOUR_DRIVE_FILE_ID_14", thumbnail: "YOUR_THUMBNAIL_URL_14" },
+			{ title: "Movie 15", driveId: "YOUR_DRIVE_FILE_ID_15", thumbnail: "YOUR_THUMBNAIL_URL_15" },
+			{ title: "Movie 16", driveId: "YOUR_DRIVE_FILE_ID_16", thumbnail: "YOUR_THUMBNAIL_URL_16" },
+			{ title: "Movie 17", driveId: "YOUR_DRIVE_FILE_ID_17", thumbnail: "YOUR_THUMBNAIL_URL_17" },
+			{ title: "Movie 18", driveId: "YOUR_DRIVE_FILE_ID_18", thumbnail: "YOUR_THUMBNAIL_URL_18" },
+			{ title: "Movie 19", driveId: "YOUR_DRIVE_FILE_ID_19", thumbnail: "YOUR_THUMBNAIL_URL_19" },
+			{ title: "Movie 20", driveId: "YOUR_DRIVE_FILE_ID_20", thumbnail: "YOUR_THUMBNAIL_URL_20" }
+        ];
 
-let currentPage = 1;
-const itemsPerPage = 2;
+        let currentPage = 1;
+        const itemsPerPage = 5;
 
-function displayMovies() {
-    const moviesContainer = document.getElementById('movies-container');
-    moviesContainer.innerHTML = '';
+        function displayMovies() {
+            const moviesContainer = document.getElementById('movies-container');
+            moviesContainer.innerHTML = '';
+            
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const paginatedMovies = movies.slice(startIndex, startIndex + itemsPerPage);
 
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const paginatedMovies = movies.slice(startIndex, endIndex);
+            paginatedMovies.forEach(movie => {
+                const movieElement = document.createElement('div');
+                movieElement.classList.add('movie');
+                movieElement.innerHTML = `
+                    <img src="${movie.thumbnail}" alt="${movie.title}" onclick="openModal('${movie.driveId}')">
+                    <h3>${movie.title}</h3>
+                `;
+                moviesContainer.appendChild(movieElement);
+            });
 
-    paginatedMovies.forEach(movie => {
-        const movieElement = document.createElement('div');
-        movieElement.classList.add('movie');
-        movieElement.innerHTML = `
-            <img src="${movie.thumbnail}" alt="${movie.title}" onclick="openModal('${movie.driveId}')">
-            <h3>${movie.title}</h3>
-        `;
-        moviesContainer.appendChild(movieElement);
-    });
+            document.getElementById('prev-btn').disabled = currentPage === 1;
+            document.getElementById('next-btn').disabled = currentPage >= Math.ceil(movies.length / itemsPerPage);
+        }
 
-    updatePaginationButtons();
-}
+        function openModal(driveId) {
+            document.getElementById('video-frame').src = `https://drive.google.com/file/d/${driveId}/preview`;
+            document.getElementById('video-modal').style.display = 'flex';
+        }
 
-function updatePaginationButtons() {
-    document.getElementById('prev-btn').disabled = currentPage === 1;
-    document.getElementById('next-btn').disabled = currentPage >= Math.ceil(movies.length / itemsPerPage);
-}
+        function closeModal() {
+            document.getElementById('video-modal').style.display = 'none';
+            document.getElementById('video-frame').src = '';
+        }
 
-function nextPage() {
-    if (currentPage < Math.ceil(movies.length / itemsPerPage)) {
-        currentPage++;
         displayMovies();
-    }
-}
-
-function previousPage() {
-    if (currentPage > 1) {
-        currentPage--;
-        displayMovies();
-    }
-}
-
-function openModal(driveId) {
-    document.getElementById('video-frame').src = `https://drive.google.com/file/d/${driveId}/preview`;
-    document.getElementById('video-modal').style.display = 'flex';
-}
-
-function closeModal() {
-    document.getElementById('video-modal').style.display = 'none';
-    document.getElementById('video-frame').src = '';
-}
-
-// Tampilkan film pertama kali
-displayMovies();
+    </script>
+</body>
+</html>
