@@ -3,40 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Explorer</title>
+    <title>Watch the trending video</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
         }
         header {
             background-color: #333;
             color: white;
             padding: 1rem;
+            text-align: center;
         }
         .search-container {
-            margin: 1rem auto;
+            text-align: center;
+            margin: 20px;
         }
         .search-container input {
-            padding: 0.5rem;
+            padding: 10px;
             width: 300px;
-            font-size: 1rem;
+            font-size: 16px;
         }
         .search-container button {
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            background-color: #333;
-            color: white;
-            border: none;
+            padding: 10px;
+            font-size: 16px;
             cursor: pointer;
-        }
-        .ad-container, .ad-section {
-            margin: 1rem 0;
-            background-color: #ddd;
-            padding: 1rem;
         }
         .container {
             padding: 2rem;
@@ -44,100 +37,230 @@
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1.5rem;
         }
-        .video-item {
+        .movie {
             background-color: white;
+            padding: 1rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
             text-align: center;
             cursor: pointer;
-            padding: 1rem;
         }
-        .video-item img {
+        .movie img {
             width: 100%;
             height: 120px;
             object-fit: cover;
             border-radius: 8px;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 360px;
+            border-radius: 8px;
+        }
         .pagination {
-            margin: 1rem 0;
+            text-align: center;
+            margin: 20px 0;
         }
         .pagination button {
-            padding: 0.5rem 1rem;
-            margin: 0 0.5rem;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .ad-container {
+            text-align: center;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Video Explorer</h1>
+        <h1>aDuLt VidEo hub</h1>
     </header>
-    <div class="ad-container">Adsterra Ad Here</div>
     <div class="search-container">
-        <input type="text" id="search" placeholder="Search videos...">
-        <button onclick="searchVideos()">Search</button>
+        <input type="text" id="search-input" placeholder="Search for a movie...">
+        <button onclick="searchMovies()">Search</button>
     </div>
-    <div class="container" id="video-container"></div>
+    <div class="ad-container">
+        
+		<style type="text/css">
+  .mobileShow {display: none;}
+
+  /* Smartphone Portrait and Landscape */
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){ 
+      .mobileShow {display: inline;}
+  }
+  .mobileHide { display: inline; }
+
+  /* Smartphone Portrait and Landscape */
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){
+     .mobileHide { display: none;}
+  }
+</style>
+
+     <div class="mobileShow">
+<center><script type="text/javascript">
+	atOptions = {
+		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
+<div class="mobileHide"><center><script type="text/javascript">
+	atOptions = {
+		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center></div>
+		
+    </div>
+    <div class="container" id="movies-container"></div>
     <div class="pagination">
         <button onclick="prevPage()">Previous</button>
-        <span id="page-number">Page 1</span>
+        <span id="page-number">1</span>
         <button onclick="nextPage()">Next</button>
     </div>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2 id="modal-title"></h2>
+            <iframe id="modal-video" frameborder="0" allowfullscreen></iframe>
+            <br>
+            <div class="ad-container">
+                
+				<style type="text/css">
+  .mobileShow {display: none;}
+
+  /* Smartphone Portrait and Landscape */
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){ 
+      .mobileShow {display: inline;}
+  }
+  .mobileHide { display: inline; }
+
+  /* Smartphone Portrait and Landscape */
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){
+     .mobileHide { display: none;}
+  }
+</style>
+
+     <div class="mobileShow">
+<center><script type="text/javascript">
+	atOptions = {
+		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
+<div class="mobileHide"><center><script type="text/javascript">
+	atOptions = {
+		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center></div>
+				
+            </div>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    
     <script>
-        let videos = Array.from({length: 10}, (_, i) => ({
-            title: `Black milf with a huge fat ass fucked by a big black cock ${i + 1}`,
-            url: "https://drive.google.com/file/d/1-6cWNJcP-f7s5Klsm9AqxANYvnLFJi8u/preview" + (i + 1),
-            thumbnail: "https://via.placeholder.com/200"
-        }));
+        const movies = [
+            { title: "Mena carlisle loves that big black jovan jordan dick in her tight pussy", driveId: "https://drive.google.com/file/d/1fQqMxposP4dx4BAK23RprTjBtn_tBVPb/preview", thumbnail: "YOUR_THUMBNAIL_URL_1" },
+            { title: "Movie 2", driveId: "YOUR_DRIVE_FILE_ID_2", thumbnail: "YOUR_THUMBNAIL_URL_2" },
+            { title: "Movie 3", driveId: "YOUR_DRIVE_FILE_ID_3", thumbnail: "YOUR_THUMBNAIL_URL_3" },
+            { title: "Movie 4", driveId: "YOUR_DRIVE_FILE_ID_4", thumbnail: "YOUR_THUMBNAIL_URL_4" },
+            { title: "Movie 5", driveId: "YOUR_DRIVE_FILE_ID_5", thumbnail: "YOUR_THUMBNAIL_URL_5" }
+        ];
+
+        let filteredMovies = [...movies];
+        const moviesPerPage = 3;
         let currentPage = 1;
-        const videosPerPage = 4;
 
-        function displayVideos() {
-            const container = document.getElementById("video-container");
-            const start = (currentPage - 1) * videosPerPage;
-            const end = start + videosPerPage;
-            const visibleVideos = videos.slice(start, end);
+        function displayMovies() {
+            const container = document.getElementById('movies-container');
+            const start = (currentPage - 1) * moviesPerPage;
+            const end = start + moviesPerPage;
+            const paginatedMovies = filteredMovies.slice(start, end);
+
+            container.innerHTML = paginatedMovies.map(movie => `
+                <div class="movie" onclick="openModal('${movie.title}', '${movie.driveId}')">
+                    <img src="${movie.thumbnail}" alt="${movie.title}">
+                    <h3>${movie.title}</h3>
+                </div>
+            `).join('');
             
-            container.innerHTML = visibleVideos.map(video => 
-                `<div class="video-item" onclick="openPopunder('${video.url}')">
-                    <img src="${video.thumbnail}" alt="${video.title}">
-                    <h3>${video.title}</h3>
-                </div>`
-            ).join('');
-            document.getElementById("page-number").innerText = `Page ${currentPage}`;
+            document.getElementById('page-number').textContent = currentPage;
         }
 
-        function searchVideos() {
-            const searchTerm = document.getElementById("search").value.toLowerCase();
-            videos = videos.filter(video => video.title.toLowerCase().includes(searchTerm));
-            currentPage = 1;
-            displayVideos();
-        }
-
-        function openPopunder(videoUrl) {
-            let newWindow = window.open(videoUrl, '_blank');
-            window.open("https://adsterra.com", '_blank'); // Popunder Adsterra
-            if (newWindow) {
-                newWindow.blur();
-                window.focus();
+        function nextPage() {
+            if (currentPage * moviesPerPage < filteredMovies.length) {
+                currentPage++;
+                displayMovies();
             }
         }
 
         function prevPage() {
             if (currentPage > 1) {
                 currentPage--;
-                displayVideos();
+                displayMovies();
             }
         }
 
-        function nextPage() {
-            if ((currentPage * videosPerPage) < videos.length) {
-                currentPage++;
-                displayVideos();
-            }
+        function searchMovies() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(query));
+            currentPage = 1;
+            displayMovies();
         }
 
-        displayVideos();
+        function openModal(title, driveId) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-video').src = `https://drive.google.com/file/d/${driveId}/preview`;
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('modal-video').src = '';
+        }
+
+        displayMovies();
     </script>
 </body>
 </html>
