@@ -70,18 +70,17 @@
         }
         .modal-content {
             background: white;
-            padding: 10px;
+            padding: 1rem;
             border-radius: 8px;
             text-align: center;
             position: relative;
-            width: 90%;
-            max-width: 480px;
-            max-height: 80vh;
-            height: auto;
+            max-width: 90%;
+            width: 800px;
         }
         .modal iframe {
             width: 100%;
-            height: 270px;
+            height: 450px;
+            max-height: 90vh;
         }
         .modal .close {
             position: absolute;
@@ -98,7 +97,7 @@
 </head>
 <body>
     <header>
-        <h1>Movies Explorer</h1>
+        <h1>Movies Explorerer</h1>
     </header>
     <div class="ad-container">
         <p>Advertisement</p>
@@ -112,7 +111,7 @@
     <div class="modal" id="video-modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <iframe id="video-frame" allow="autoplay" frameborder="0" allowfullscreen></iframe>
+            <iframe id="video-frame" frameborder="0" allowfullscreen></iframe>
             <div class="ad-container">
                 <p>Advertisement</p>
                 <script type="text/javascript" src="//fryboldlymalice.com/ad-script.js"></script>
@@ -121,9 +120,6 @@
     </div>
     <script>
         const movies = [
-		    { title: "Mena carlisle loves that big black jovan jordan dick in her tight pussy", driveId: "1fQqMxposP4dx4BAK23RprTjBtn_tBVPb", thumbnail: "YOUR_THUMBNAIL_URL_1" },
-            { title: "STEPSISTER WITH A LOT OF DOUBTS ABOUT SEX", driveId: "1wsI9wGO0xuLh1b0njsopMsUhk7joTwkP", thumbnail: "YOUR_THUMBNAIL_URL_2" },
-            { title: "Cowgirl in the dark with 18yo Asian teen Baebi Hel", driveId: "1yF9FTE8ztuhtDM6D7VJvS7ihNWd34ROj", thumbnail: "YOUR_THUMBNAIL_URL_3" },
             { title: "Movie 1", driveId: "YOUR_DRIVE_FILE_ID_1", thumbnail: "YOUR_THUMBNAIL_URL_1" },
             { title: "Movie 2", driveId: "YOUR_DRIVE_FILE_ID_2", thumbnail: "YOUR_THUMBNAIL_URL_2" },
             { title: "Movie 3", driveId: "YOUR_DRIVE_FILE_ID_3", thumbnail: "YOUR_THUMBNAIL_URL_3" },
@@ -164,6 +160,20 @@
         function closeModal() {
             document.getElementById('video-modal').style.display = 'none';
             document.getElementById('video-frame').src = '';
+        }
+
+        function nextPage() {
+            if (currentPage * itemsPerPage < movies.length) {
+                currentPage++;
+                displayMovies();
+            }
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayMovies();
+            }
         }
 
         displayMovies();
