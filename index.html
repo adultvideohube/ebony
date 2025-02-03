@@ -98,103 +98,47 @@
         <button onclick="searchMovies()">Search</button>
     </div>
     <div class="ad-container">
-<style type="text/css">
-  .mobileShow {display: none;}
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 310px)
-    and (max-device-width : 480px){ 
-      .mobileShow {display: inline;}
-  }
-  .mobileHide { display: inline; }
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 310px)
-    and (max-device-width : 480px){
-     .mobileHide { display: none;}
-  }
-</style>
-
-     <div class="mobileShow">
-<center><script type="text/javascript">
+<script type="text/javascript">
 	atOptions = {
-		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
+		'key' : '26ab5f7e2864a41f249fc7e5a2522d5d',
 		'format' : 'iframe',
 		'height' : 50,
 		'width' : 320,
 		'params' : {}
 	};
 </script>
-<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
-<div class="mobileHide"><center><script type="text/javascript">
-	atOptions = {
-		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center>
+<script type="text/javascript" src="//fryboldlymalice.com/26ab5f7e2864a41f249fc7e5a2522d5d/invoke.js"></script>
 
+<script type='text/javascript' src='//fryboldlymalice.com/04/a8/e7/04a8e72e519ef1af64c4bed16f6c43ed.js'></script>
     </div>
-    <div class="container" id="movies-container"></div>
-    <div class="pagination">
-        <button onclick="prevPage()">Previous</button>
-        <span id="page-number">1</span>
-        <button onclick="nextPage()">Next</button>
+    <div class="container" id="movies-container">
+        <!-- Movies will be displayed here -->
     </div>
-    <div class="modal" id="modal">
-        <div class="modal-content">
+
+    <div id="modal">
+        <div id="modal-content">
+            <button onclick="closeModal()">Close</button>
+            <img id="modal-img" src="" alt="Movie Backdrop">
             <h2 id="modal-title"></h2>
-            <iframe id="modal-video" frameborder="0" allowfullscreen></iframe>
-            <br>
-            <div class="ad-container">
-<style type="text/css">
-  .mobileShow {display: none;}
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 310px)
-    and (max-device-width : 480px){ 
-      .mobileShow {display: inline;}
-  }
-  .mobileHide { display: inline; }
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 310px)
-    and (max-device-width : 480px){
-     .mobileHide { display: none;}
-  }
-</style>
-
-     <div class="mobileShow">
-<center><script type="text/javascript">
+            <p class="genres" id="modal-genres"></p>
+            <p id="modal-overview"></p>
+            <p id="modal-release-date"></p>
+            <iframe id="modal-trailer" width="560" height="360" frameborder="0" allowfullscreen></iframe>
+            <div class="ad-section">
+                <!-- Adsterra ad placeholder inside modal -->
+<script type="text/javascript">
 	atOptions = {
-		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
+		'key' : '26ab5f7e2864a41f249fc7e5a2522d5d',
 		'format' : 'iframe',
 		'height' : 50,
 		'width' : 320,
 		'params' : {}
 	};
 </script>
-<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
-<div class="mobileHide"><center><script type="text/javascript">
-	atOptions = {
-		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script></center>
+<script type="text/javascript" src="//fryboldlymalice.com/26ab5f7e2864a41f249fc7e5a2522d5d/invoke.js"></script>
 
             </div>
-            <button onclick="closeModal()">Close</button>
+            <button onclick="goBackToMovies()">Back to Movies</button>
         </div>
     </div>
     
