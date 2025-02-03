@@ -56,16 +56,63 @@
         .pagination button:hover {
             background-color: #555;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+        .modal iframe {
+            width: 560px;
+            height: 315px;
+        }
+        .modal .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        .ad-container {
+            text-align: center;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Movies Explorer</h1>
     </header>
+    <div class="ad-container">
+        <p>Advertisement</p>
+        <script type="text/javascript" src="//fryboldlymalice.com/ad-script.js"></script>
+    </div>
     <div class="container" id="movies-container"></div>
     <div class="pagination">
         <button onclick="previousPage()" id="prev-btn" disabled>Previous</button>
         <button onclick="nextPage()" id="next-btn">Next</button>
+    </div>
+    <div class="modal" id="video-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <iframe id="video-frame" frameborder="0" allowfullscreen></iframe>
+            <div class="ad-container">
+                <p>Advertisement</p>
+                <script type="text/javascript" src="//fryboldlymalice.com/ad-script.js"></script>
+            </div>
+        </div>
     </div>
     <script>
         const movies = [
@@ -91,15 +138,24 @@
                 const movieElement = document.createElement('div');
                 movieElement.classList.add('movie');
                 movieElement.innerHTML = `
-                    <img src="${movie.thumbnail}" alt="${movie.title}">
+                    <img src="${movie.thumbnail}" alt="${movie.title}" onclick="openModal('${movie.driveId}')">
                     <h3>${movie.title}</h3>
-                    <a href="https://drive.google.com/file/d/${movie.driveId}/view" target="_blank">Watch Now</a>
                 `;
                 moviesContainer.appendChild(movieElement);
             });
 
             document.getElementById('prev-btn').disabled = currentPage === 1;
             document.getElementById('next-btn').disabled = currentPage * itemsPerPage >= movies.length;
+        }
+
+        function openModal(driveId) {
+            document.getElementById('video-frame').src = `https://drive.google.com/file/d/${driveId}/preview`;
+            document.getElementById('video-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('video-modal').style.display = 'none';
+            document.getElementById('video-frame').src = '';
         }
 
         function nextPage() {
