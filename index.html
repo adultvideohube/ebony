@@ -70,18 +70,17 @@
         }
         .modal-content {
             background: white;
-            padding: 10px;
+            padding: 1rem;
             border-radius: 8px;
             text-align: center;
             position: relative;
-            width: 90%;
-            max-width: 480px;
-            max-height: 80vh;
-            height: auto;
+            max-width: 90%;
+            width: 800px;
         }
         .modal iframe {
             width: 100%;
-            height: 270px;
+            height: 450px;
+            max-height: 90vh;
         }
         .modal .close {
             position: absolute;
@@ -94,18 +93,6 @@
             text-align: center;
             margin-top: 10px;
         }
-        .back-button {
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-        .back-button:hover {
-            background-color: #555;
-        }
     </style>
 </head>
 <body>
@@ -113,46 +100,8 @@
         <h1>Movies Explorer</h1>
     </header>
     <div class="ad-container">
-        <style type="text/css">
-  .mobileShow {display: none;}
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){ 
-      .mobileShow {display: inline;}
-  }
-  .mobileHide { display: inline; }
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){
-     .mobileHide { display: none;}
-  }
-</style>
-
-     <div class="mobileShow">
-<center><script type="text/javascript">
-	atOptions = {
-		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
-<div class="mobileHide"><center><script type="text/javascript">
-	atOptions = {
-		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script>
+        <p>Advertisement</p>
+        <script type="text/javascript" src="//fryboldlymalice.com/ad-script.js"></script>
     </div>
     <div class="container" id="movies-container"></div>
     <div class="pagination">
@@ -162,19 +111,11 @@
     <div class="modal" id="video-modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <iframe id="video-frame" allow="autoplay" frameborder="0" allowfullscreen></iframe>
-            <button class="back-button" onclick="closeModal()">Kembali</button>
+            <iframe id="video-frame" frameborder="0" allowfullscreen></iframe>
+			<button class="back-button" onclick="closeModal()">Kembali</button>
             <div class="ad-container">
-                <script type="text/javascript">
-	atOptions = {
-		'key' : '0fd2e5d402f21cfb8002c504e77bb3c5',
-		'format' : 'iframe',
-		'height' : 60,
-		'width' : 468,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/0fd2e5d402f21cfb8002c504e77bb3c5/invoke.js"></script>
+                <p>Advertisement</p>
+                <script type="text/javascript" src="//fryboldlymalice.com/ad-script.js"></script>
             </div>
         </div>
     </div>
@@ -185,15 +126,25 @@
             { title: "Movie 3", driveId: "YOUR_DRIVE_FILE_ID_3", thumbnail: "YOUR_THUMBNAIL_URL_3" },
             { title: "Movie 4", driveId: "YOUR_DRIVE_FILE_ID_4", thumbnail: "YOUR_THUMBNAIL_URL_4" },
             { title: "Movie 5", driveId: "YOUR_DRIVE_FILE_ID_5", thumbnail: "YOUR_THUMBNAIL_URL_5" },
-			{ title: "Movie 6", driveId: "YOUR_DRIVE_FILE_ID_6", thumbnail: "YOUR_THUMBNAIL_URL_6" },
+            { title: "Movie 6", driveId: "YOUR_DRIVE_FILE_ID_6", thumbnail: "YOUR_THUMBNAIL_URL_6" },
 			{ title: "Movie 7", driveId: "YOUR_DRIVE_FILE_ID_7", thumbnail: "YOUR_THUMBNAIL_URL_7" },
 			{ title: "Movie 8", driveId: "YOUR_DRIVE_FILE_ID_8", thumbnail: "YOUR_THUMBNAIL_URL_8" },
 			{ title: "Movie 9", driveId: "YOUR_DRIVE_FILE_ID_9", thumbnail: "YOUR_THUMBNAIL_URL_9" },
 			{ title: "Movie 10", driveId: "YOUR_DRIVE_FILE_ID_10", thumbnail: "YOUR_THUMBNAIL_URL_10" },
+			{ title: "Movie 11", driveId: "YOUR_DRIVE_FILE_ID_11", thumbnail: "YOUR_THUMBNAIL_URL_11" },
+			{ title: "Movie 12", driveId: "YOUR_DRIVE_FILE_ID_12", thumbnail: "YOUR_THUMBNAIL_URL_12" },
+			{ title: "Movie 13", driveId: "YOUR_DRIVE_FILE_ID_13", thumbnail: "YOUR_THUMBNAIL_URL_13" },
+			{ title: "Movie 14", driveId: "YOUR_DRIVE_FILE_ID_14", thumbnail: "YOUR_THUMBNAIL_URL_14" },
+			{ title: "Movie 15", driveId: "YOUR_DRIVE_FILE_ID_15", thumbnail: "YOUR_THUMBNAIL_URL_15" },
+			{ title: "Movie 16", driveId: "YOUR_DRIVE_FILE_ID_16", thumbnail: "YOUR_THUMBNAIL_URL_16" },
+			{ title: "Movie 17", driveId: "YOUR_DRIVE_FILE_ID_17", thumbnail: "YOUR_THUMBNAIL_URL_17" },
+			{ title: "Movie 18", driveId: "YOUR_DRIVE_FILE_ID_18", thumbnail: "YOUR_THUMBNAIL_URL_18" },
+			{ title: "Movie 19", driveId: "YOUR_DRIVE_FILE_ID_19", thumbnail: "YOUR_THUMBNAIL_URL_19" },
+			{ title: "Movie 20", driveId: "YOUR_DRIVE_FILE_ID_20", thumbnail: "YOUR_THUMBNAIL_URL_20" },
         ];
 
         let currentPage = 1;
-        const itemsPerPage = 4;
+        const itemsPerPage = 5;
 
         function displayMovies() {
             const moviesContainer = document.getElementById('movies-container');
@@ -224,6 +175,20 @@
         function closeModal() {
             document.getElementById('video-modal').style.display = 'none';
             document.getElementById('video-frame').src = '';
+        }
+
+        function nextPage() {
+            if (currentPage * itemsPerPage < movies.length) {
+                currentPage++;
+                displayMovies();
+            }
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayMovies();
+            }
         }
 
         displayMovies();
