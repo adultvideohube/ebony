@@ -3,95 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watch the trending video</title>
+    <title>Where To Watch Popular Movies</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
         }
         header {
             background-color: #333;
             color: white;
-            padding: 1rem;
+            padding: 1rem 2rem;
             text-align: center;
         }
         .search-container {
+            margin: 1rem auto;
             text-align: center;
-            margin: 10px auto; /* Kurangi margin */
         }
         .search-container input {
-            padding: 10px;
+            padding: 0.5rem;
+            font-size: 1rem;
             width: 300px;
-            font-size: 16px;
         }
         .search-container button {
-            padding: 10px;
-            font-size: 16px;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background-color: #333;
+            color: white;
+            border: none;
             cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #555;
         }
         .container {
             padding: 2rem;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1.5rem;
-            margin-top: 10px; /* Tambahkan jarak kecil */
         }
         .movie {
             background-color: white;
-            padding: 1rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
             text-align: center;
             cursor: pointer;
         }
         .movie img {
             width: 100%;
-            height: 110px;
+            height: 120px;
             object-fit: cover;
-            border-radius: 8px;
         }
-        .modal {
+        .movie h3 {
+            font-size: 1.2rem;
+            margin: 0.5rem;
+        }
+        .movie p {
+            color: #555;
+            margin: 0.5rem;
+        }
+        .movie .release-date {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        .ad-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        #modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
             justify-content: center;
             align-items: center;
+            overflow: auto;
+            z-index: 1000;
         }
-        .modal-content {
-            background: white;
-            padding: 10px;
+        #modal-content {
+            background: #222;
+            padding: 2rem;
             border-radius: 8px;
+            max-width: 900px;
+            width: 90%;
+            position: relative;
+        }
+        #modal img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        #modal h2 {
+            margin: 1rem 0;
+        }
+        #modal p {
+            margin: 0.5rem 0;
+        }
+        #modal .genres {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 1rem;
+        }
+        #modal button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #e50914;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #modal button:hover {
+            background-color: #f30c1d;
+        }
+        .ad-section {
+            margin-top: 1rem;
             text-align: center;
+            background-color: #444;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .ad-section p {
+            color: #ccc;
+            margin: 0;
         }
         iframe {
-            width: 100%;
-            height: 360px;
+            max-width: 100%;
             border-radius: 8px;
-        }
-        .pagination {
-            text-align: center;
-            margin: 10px 0;
-        }
-        .pagination button {
-            padding: 10px;
-            margin: 5px;
-            cursor: pointer;
-        }
-        .ad-container {
-            text-align: center;
-            margin: 10px 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>aDuLt VidEo hub</h1>
+        <h1>Movies Explorer</h1>
     </header>
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search for a movie...">
@@ -141,7 +190,7 @@
             <button onclick="goBackToMovies()">Back to Movies</button>
         </div>
     </div>
-    
+
     <script>
         const movies = [
             { title: "Mena carlisle loves that big black jovan jordan dick in her tight pussy", driveId: "1fQqMxposP4dx4BAK23RprTjBtn_tBVPb", thumbnail: "https://scontent.fcgk18-1.fna.fbcdn.net/v/t39.30808-6/475744074_1321171002243171_3137965461351804725_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=2285d6&_nc_ohc=chJU1zldpeQQ7kNvgHmEaY_&_nc_oc=Adh_DzRumsp_3tzHkXA3Eq2qXN4tTFnEKQlTjAR-IOYZuI3GFlSmzFwCjcp2a20mQVQ&_nc_zt=23&_nc_ht=scontent.fcgk18-1.fna&_nc_gid=Agz1czzxPBa6B0lTBZts_nW&oh=00_AYCzyHrI762XWUQrVDWNwUzQvokQPQxunUsABhea92vArw&oe=67A6E9E8" },
