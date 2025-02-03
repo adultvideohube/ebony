@@ -94,6 +94,18 @@
             text-align: center;
             margin-top: 10px;
         }
+        .back-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .back-button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
@@ -101,8 +113,46 @@
         <h1>Movies Explorer</h1>
     </header>
     <div class="ad-container">
-        <p>Advertisement</p>
-        <script type="text/javascript" src="//fryboldlymalice.com/ad-script.js"></script>
+        <style type="text/css">
+  .mobileShow {display: none;}
+
+  /* Smartphone Portrait and Landscape */
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){ 
+      .mobileShow {display: inline;}
+  }
+  .mobileHide { display: inline; }
+
+  /* Smartphone Portrait and Landscape */
+  @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){
+     .mobileHide { display: none;}
+  }
+</style>
+
+     <div class="mobileShow">
+<center><script type="text/javascript">
+	atOptions = {
+		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
+<div class="mobileHide"><center><script type="text/javascript">
+	atOptions = {
+		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script>
     </div>
     <div class="container" id="movies-container"></div>
     <div class="pagination">
@@ -113,60 +163,87 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <iframe id="video-frame" allow="autoplay" frameborder="0" allowfullscreen></iframe>
+            <button class="back-button" onclick="closeModal()">Kembali</button>
             <div class="ad-container">
-                <p>Advertisement</p>
-                <script type="text/javascript" src="//fryboldlymalice.com/ad-script.js"></script>
+                <script type="text/javascript">
+	atOptions = {
+		'key' : '0fd2e5d402f21cfb8002c504e77bb3c5',
+		'format' : 'iframe',
+		'height' : 60,
+		'width' : 468,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//identicalprofile.com/0fd2e5d402f21cfb8002c504e77bb3c5/invoke.js"></script>
             </div>
         </div>
     </div>
     <script>
         const movies = [
-		    { title: "Mena carlisle loves that big black jovan jordan dick in her tight pussy", driveId: "1fQqMxposP4dx4BAK23RprTjBtn_tBVPb", thumbnail: "YOUR_THUMBNAIL_URL_1" },
-            { title: "STEPSISTER WITH A LOT OF DOUBTS ABOUT SEX", driveId: "1wsI9wGO0xuLh1b0njsopMsUhk7joTwkP", thumbnail: "YOUR_THUMBNAIL_URL_2" },
-            { title: "Cowgirl in the dark with 18yo Asian teen Baebi Hel", driveId: "1yF9FTE8ztuhtDM6D7VJvS7ihNWd34ROj", thumbnail: "YOUR_THUMBNAIL_URL_3" },
-            { title: "Movie 1", driveId: "YOUR_DRIVE_FILE_ID_1", thumbnail: "YOUR_THUMBNAIL_URL_1" },
-            { title: "Movie 2", driveId: "YOUR_DRIVE_FILE_ID_2", thumbnail: "YOUR_THUMBNAIL_URL_2" },
-            { title: "Movie 3", driveId: "YOUR_DRIVE_FILE_ID_3", thumbnail: "YOUR_THUMBNAIL_URL_3" },
-            { title: "Movie 4", driveId: "YOUR_DRIVE_FILE_ID_4", thumbnail: "YOUR_THUMBNAIL_URL_4" },
-            { title: "Movie 5", driveId: "YOUR_DRIVE_FILE_ID_5", thumbnail: "YOUR_THUMBNAIL_URL_5" },
-            { title: "Movie 6", driveId: "YOUR_DRIVE_FILE_ID_6", thumbnail: "YOUR_THUMBNAIL_URL_6" },
-        ];
+    { title: "Movie 1", driveId: "YOUR_DRIVE_FILE_ID_1", thumbnail: "YOUR_THUMBNAIL_URL_1" },
+    { title: "Movie 2", driveId: "YOUR_DRIVE_FILE_ID_2", thumbnail: "YOUR_THUMBNAIL_URL_2" },
+    { title: "Movie 3", driveId: "YOUR_DRIVE_FILE_ID_3", thumbnail: "YOUR_THUMBNAIL_URL_3" },
+    { title: "Movie 4", driveId: "YOUR_DRIVE_FILE_ID_4", thumbnail: "YOUR_THUMBNAIL_URL_4" },
+    { title: "Movie 5", driveId: "YOUR_DRIVE_FILE_ID_5", thumbnail: "YOUR_THUMBNAIL_URL_5" },
+    { title: "Movie 6", driveId: "YOUR_DRIVE_FILE_ID_6", thumbnail: "YOUR_THUMBNAIL_URL_6" },
+    { title: "Movie 7", driveId: "YOUR_DRIVE_FILE_ID_7", thumbnail: "YOUR_THUMBNAIL_URL_7" },
+    { title: "Movie 8", driveId: "YOUR_DRIVE_FILE_ID_8", thumbnail: "YOUR_THUMBNAIL_URL_8" },
+    { title: "Movie 9", driveId: "YOUR_DRIVE_FILE_ID_9", thumbnail: "YOUR_THUMBNAIL_URL_9" },
+    { title: "Movie 10", driveId: "YOUR_DRIVE_FILE_ID_10", thumbnail: "YOUR_THUMBNAIL_URL_10" }
+];
 
-        let currentPage = 1;
-        const itemsPerPage = 2;
+let currentPage = 1;
+const itemsPerPage = 2;
 
-        function displayMovies() {
-            const moviesContainer = document.getElementById('movies-container');
-            moviesContainer.innerHTML = '';
-            
-            const startIndex = (currentPage - 1) * itemsPerPage;
-            const paginatedMovies = movies.slice(startIndex, startIndex + itemsPerPage);
+function displayMovies() {
+    const moviesContainer = document.getElementById('movies-container');
+    moviesContainer.innerHTML = '';
 
-            paginatedMovies.forEach(movie => {
-                const movieElement = document.createElement('div');
-                movieElement.classList.add('movie');
-                movieElement.innerHTML = `
-                    <img src="${movie.thumbnail}" alt="${movie.title}" onclick="openModal('${movie.driveId}')">
-                    <h3>${movie.title}</h3>
-                `;
-                moviesContainer.appendChild(movieElement);
-            });
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedMovies = movies.slice(startIndex, endIndex);
 
-            document.getElementById('prev-btn').disabled = currentPage === 1;
-            document.getElementById('next-btn').disabled = currentPage * itemsPerPage >= movies.length;
-        }
+    paginatedMovies.forEach(movie => {
+        const movieElement = document.createElement('div');
+        movieElement.classList.add('movie');
+        movieElement.innerHTML = `
+            <img src="${movie.thumbnail}" alt="${movie.title}" onclick="openModal('${movie.driveId}')">
+            <h3>${movie.title}</h3>
+        `;
+        moviesContainer.appendChild(movieElement);
+    });
 
-        function openModal(driveId) {
-            document.getElementById('video-frame').src = `https://drive.google.com/file/d/${driveId}/preview`;
-            document.getElementById('video-modal').style.display = 'flex';
-        }
+    updatePaginationButtons();
+}
 
-        function closeModal() {
-            document.getElementById('video-modal').style.display = 'none';
-            document.getElementById('video-frame').src = '';
-        }
+function updatePaginationButtons() {
+    document.getElementById('prev-btn').disabled = currentPage === 1;
+    document.getElementById('next-btn').disabled = currentPage >= Math.ceil(movies.length / itemsPerPage);
+}
 
+function nextPage() {
+    if (currentPage < Math.ceil(movies.length / itemsPerPage)) {
+        currentPage++;
         displayMovies();
-    </script>
-</body>
-</html>
+    }
+}
+
+function previousPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        displayMovies();
+    }
+}
+
+function openModal(driveId) {
+    document.getElementById('video-frame').src = `https://drive.google.com/file/d/${driveId}/preview`;
+    document.getElementById('video-modal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('video-modal').style.display = 'none';
+    document.getElementById('video-frame').src = '';
+}
+
+// Tampilkan film pertama kali
+displayMovies();
