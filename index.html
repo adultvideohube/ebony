@@ -17,23 +17,6 @@
             padding: 1rem 2rem;
             text-align: center;
         }
-        .search-container {
-            margin: 1rem auto;
-            text-align: center;
-        }
-        .search-container input {
-            padding: 0.5rem;
-            font-size: 1rem;
-            width: 300px;
-        }
-        .search-container button {
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
         .container {
             padding: 2rem;
             display: grid;
@@ -43,6 +26,8 @@
         .movie {
             background-color: white;
             border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
             text-align: center;
             cursor: pointer;
         }
@@ -55,20 +40,21 @@
             font-size: 1.2rem;
             margin: 0.5rem;
         }
-        .ad-container {
+        .pagination {
             text-align: center;
             margin: 2rem 0;
         }
-        #next-page {
-            display: block;
-            margin: 1rem auto;
+        .pagination button {
             padding: 0.5rem 1rem;
             font-size: 1rem;
-            background-color: #e50914;
+            background-color: #333;
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 4px;
+            margin: 0 5px;
+        }
+        .pagination button:hover {
+            background-color: #555;
         }
     </style>
 </head>
@@ -76,132 +62,60 @@
     <header>
         <h1>Movies Explorer</h1>
     </header>
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search for a movie...">
-        <button onclick="searchMovies()">Search</button>
-    </div>
-    <div class="ad-container">
-<style type="text/css">
-  .mobileShow {display: none;}
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){ 
-      .mobileShow {display: inline;}
-  }
-  .mobileHide { display: inline; }
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){
-     .mobileHide { display: none;}
-  }
-</style>
-
-     <div class="mobileShow">
-<center><script type="text/javascript">
-	atOptions = {
-		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
-<div class="mobileHide"><center><script type="text/javascript">
-	atOptions = {
-		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script>
-    </div>
     <div class="container" id="movies-container"></div>
-    <div class="ad-container">
-        <style type="text/css">
-  .mobileShow {display: none;}
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){ 
-      .mobileShow {display: inline;}
-  }
-  .mobileHide { display: inline; }
-
-  /* Smartphone Portrait and Landscape */
-  @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px){
-     .mobileHide { display: none;}
-  }
-</style>
-
-     <div class="mobileShow">
-<center><script type="text/javascript">
-	atOptions = {
-		'key' : '4bba2802ecf8c3ea186ac5104cf76664',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/4bba2802ecf8c3ea186ac5104cf76664/invoke.js"></script></center></div>
-<div class="mobileHide"><center><script type="text/javascript">
-	atOptions = {
-		'key' : 'fe1d2ae890a7d2443d36d8183f2cf16d',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//identicalprofile.com/fe1d2ae890a7d2443d36d8183f2cf16d/invoke.js"></script>
+    <div class="pagination">
+        <button onclick="previousPage()" id="prev-btn" disabled>Previous</button>
+        <button onclick="nextPage()" id="next-btn">Next</button>
     </div>
-    <button id="next-page" onclick="loadNextPage()">Next Page</button>
-    
     <script>
-        let movies = [
-            { title: "Mena carlisle loves that big black jovan jordan dick in her tight pussy", driveId: "1fQqMxposP4dx4BAK23RprTjBtn_tBVPb", thumbnail: "YOUR_THUMBNAIL_URL_1" },
+        const movies = [
+            { title: "Movie 1", driveId: "YOUR_DRIVE_FILE_ID_1", thumbnail: "YOUR_THUMBNAIL_URL_1" },
             { title: "Movie 2", driveId: "YOUR_DRIVE_FILE_ID_2", thumbnail: "YOUR_THUMBNAIL_URL_2" },
-            { title: "Movie 3", driveId: "YOUR_DRIVE_FILE_ID_3", thumbnail: "YOUR_THUMBNAIL_URL_3" }
+            { title: "Movie 3", driveId: "YOUR_DRIVE_FILE_ID_3", thumbnail: "YOUR_THUMBNAIL_URL_3" },
+            { title: "Movie 4", driveId: "YOUR_DRIVE_FILE_ID_4", thumbnail: "YOUR_THUMBNAIL_URL_4" },
+            { title: "Movie 5", driveId: "YOUR_DRIVE_FILE_ID_5", thumbnail: "YOUR_THUMBNAIL_URL_5" },
+            { title: "Movie 6", driveId: "YOUR_DRIVE_FILE_ID_6", thumbnail: "YOUR_THUMBNAIL_URL_6" },
         ];
-        let currentPage = 0;
-        const moviesPerPage = 2;
+
+        let currentPage = 1;
+        const itemsPerPage = 2;
 
         function displayMovies() {
             const moviesContainer = document.getElementById('movies-container');
             moviesContainer.innerHTML = '';
-            const start = currentPage * moviesPerPage;
-            const end = start + moviesPerPage;
-            const paginatedMovies = movies.slice(start, end);
             
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const paginatedMovies = movies.slice(startIndex, startIndex + itemsPerPage);
+
             paginatedMovies.forEach(movie => {
                 const movieElement = document.createElement('div');
                 movieElement.classList.add('movie');
                 movieElement.innerHTML = `
                     <img src="${movie.thumbnail}" alt="${movie.title}">
                     <h3>${movie.title}</h3>
-                    <p><a href="https://drive.google.com/file/d/${movie.driveId}/view" target="_blank">Watch Now</a></p>
+                    <a href="https://drive.google.com/file/d/${movie.driveId}/view" target="_blank">Watch Now</a>
                 `;
                 moviesContainer.appendChild(movieElement);
             });
+
+            document.getElementById('prev-btn').disabled = currentPage === 1;
+            document.getElementById('next-btn').disabled = currentPage * itemsPerPage >= movies.length;
         }
-        
-        function loadNextPage() {
-            if ((currentPage + 1) * moviesPerPage < movies.length) {
+
+        function nextPage() {
+            if (currentPage * itemsPerPage < movies.length) {
                 currentPage++;
                 displayMovies();
             }
         }
-        
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayMovies();
+            }
+        }
+
         displayMovies();
     </script>
 </body>
