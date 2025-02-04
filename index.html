@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies Explorer - Upgraded</title>
+    <title>Where To Watch Popular Movies</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            text-align: center;
         }
         header {
-            background-color: #222;
+            background-color: #333;
             color: white;
             padding: 1rem 2rem;
-            font-size: 1.5rem;
+            text-align: center;
         }
         .container {
             padding: 2rem;
@@ -25,40 +24,37 @@
             gap: 1.5rem;
         }
         .movie {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            transition: transform 0.3s;
+            text-align: center;
             cursor: pointer;
-        }
-        .movie:hover {
-            transform: scale(1.05);
         }
         .movie img {
             width: 100%;
-            height: 150px;
+            height: 120px;
             object-fit: cover;
         }
         .movie h3 {
-            font-size: 1.1rem;
-            margin: 0.7rem;
+            font-size: 1.2rem;
+            margin: 0.5rem;
         }
         .pagination {
+            text-align: center;
             margin: 2rem 0;
         }
         .pagination button {
-            padding: 10px 20px;
+            padding: 0.5rem 1rem;
             font-size: 1rem;
-            background: #222;
+            background-color: #333;
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s;
+            margin: 0 5px;
         }
         .pagination button:hover {
-            background: #444;
+            background-color: #555;
         }
         .modal {
             display: none;
@@ -68,46 +64,58 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
-            display: flex;
             justify-content: center;
             align-items: center;
+            padding: 1rem;
         }
         .modal-content {
             background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
+            padding: 10px;
+            border-radius: 8px;
             text-align: center;
-            max-width: 90%;
-            width: 700px;
             position: relative;
+            width: 90%;
+            max-width: 480px;
+            max-height: 80vh;
+            height: auto;
         }
         .modal iframe {
             width: 100%;
-            height: 400px;
+            height: 270px;
         }
-        .close {
+        .modal .close {
             position: absolute;
             top: 10px;
-            right: 15px;
-            font-size: 1.5rem;
+            right: 10px;
             cursor: pointer;
+            font-size: 1.5rem;
+        }
+        .ad-container {
+            text-align: center;
+            margin-top: 10px;
         }
         .back-button {
-            padding: 10px 20px;
-            background: red;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #333;
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
+            width: 100%;
         }
         .back-button:hover {
-            background: darkred;
+            background-color: #555;
         }
     </style>
 </head>
 <body>
-    <header>Movies Explorer</header>
+    <header>
+        <h1>Movies Explorer</h1>
+    </header>
+    <div class="ad-container">
+        <p>Advertisement</p>
+        <script type="text/javascript" src="//fryboldlymalice.com/ad-script.js"></script>
+    </div>
     <div class="container" id="movies-container"></div>
     <div class="pagination">
         <button onclick="previousPage()" id="prev-btn" disabled>Previous</button>
@@ -117,21 +125,87 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <iframe id="video-frame" allow="autoplay" frameborder="0" allowfullscreen></iframe>
-            <button class="back-button" onclick="closeModal()">Kembali</button>
+            <div class="ad-container">
+                <p>Advertisement</p>
+                <script type="text/javascript" src="//fryboldlymalice.com/ad-script.js"></script>
+			<button class="back-button" onclick="closeModal()">Kembali</button>
+            </div>
         </div>
     </div>
     <script>
         const movies = [
-            { title: "Movie 1", driveId: "YOUR_DRIVE_ID_1", thumbnail: "YOUR_THUMBNAIL_URL_1" },
-            { title: "Movie 2", driveId: "YOUR_DRIVE_ID_2", thumbnail: "YOUR_THUMBNAIL_URL_2" },
+            { title: "Mena carlisle loves that big black jovan jordan dick in her tight pussy", driveId: "1fQqMxposP4dx4BAK23RprTjBtn_tBVPb", thumbnail: "YOUR_THUMBNAIL_URL_1" },
+            { title: "STEPSISTER WITH A LOT OF DOUBTS ABOUT SEX", driveId: "1wsI9wGO0xuLh1b0njsopMsUhk7joTwkP", thumbnail: "YOUR_THUMBNAIL_URL_2" },
+            { title: "Cowgirl in the dark with 18yo Asian teen Baebi Hel", driveId: "1yF9FTE8ztuhtDM6D7VJvS7ihNWd34ROj", thumbnail: "YOUR_THUMBNAIL_URL_3" },
+            { title: "Sucking Big Czech on My Vacation in Prague", driveId: "1358VleB3juA7OiUaLODgBcwROp6lsZtD", thumbnail: "YOUR_THUMBNAIL_URL_4" },
+            { title: "Movie 5", driveId: "YOUR_DRIVE_FILE_ID_5", thumbnail: "YOUR_THUMBNAIL_URL_5" },
+            { title: "Movie 6", driveId: "YOUR_DRIVE_FILE_ID_6", thumbnail: "YOUR_THUMBNAIL_URL_6" },
+			{ title: "Movie 7", driveId: "YOUR_DRIVE_FILE_ID_7", thumbnail: "YOUR_THUMBNAIL_URL_7" },
+			{ title: "Movie 8", driveId: "YOUR_DRIVE_FILE_ID_8", thumbnail: "YOUR_THUMBNAIL_URL_8" },
+			{ title: "Movie 9", driveId: "YOUR_DRIVE_FILE_ID_9", thumbnail: "YOUR_THUMBNAIL_URL_9" },
+			{ title: "Movie 10", driveId: "YOUR_DRIVE_FILE_ID_10", thumbnail: "YOUR_THUMBNAIL_URL_10" },
+			{ title: "Movie 11", driveId: "YOUR_DRIVE_FILE_ID_11", thumbnail: "YOUR_THUMBNAIL_URL_11" },
+			{ title: "Movie 12", driveId: "YOUR_DRIVE_FILE_ID_12", thumbnail: "YOUR_THUMBNAIL_URL_12" },
+			{ title: "Movie 13", driveId: "YOUR_DRIVE_FILE_ID_13", thumbnail: "YOUR_THUMBNAIL_URL_13" },
+			{ title: "Movie 14", driveId: "YOUR_DRIVE_FILE_ID_14", thumbnail: "YOUR_THUMBNAIL_URL_14" },
+			{ title: "Movie 15", driveId: "YOUR_DRIVE_FILE_ID_15", thumbnail: "YOUR_THUMBNAIL_URL_15" },
+			{ title: "Movie 16", driveId: "YOUR_DRIVE_FILE_ID_16", thumbnail: "YOUR_THUMBNAIL_URL_16" },
+			{ title: "Movie 17", driveId: "YOUR_DRIVE_FILE_ID_17", thumbnail: "YOUR_THUMBNAIL_URL_17" },
+			{ title: "Movie 18", driveId: "YOUR_DRIVE_FILE_ID_18", thumbnail: "YOUR_THUMBNAIL_URL_18" },
+			{ title: "Movie 19", driveId: "YOUR_DRIVE_FILE_ID_19", thumbnail: "YOUR_THUMBNAIL_URL_19" },
+			{ title: "Movie 20", driveId: "YOUR_DRIVE_FILE_ID_20", thumbnail: "YOUR_THUMBNAIL_URL_20" },
+			{ title: "Movie 21", driveId: "YOUR_DRIVE_FILE_ID_21", thumbnail: "YOUR_THUMBNAIL_URL_21" },
+			{ title: "Movie 22", driveId: "YOUR_DRIVE_FILE_ID_22", thumbnail: "YOUR_THUMBNAIL_URL_22" },
+			{ title: "Movie 23", driveId: "YOUR_DRIVE_FILE_ID_23", thumbnail: "YOUR_THUMBNAIL_URL_230" },
+			{ title: "Movie 24", driveId: "YOUR_DRIVE_FILE_ID_24", thumbnail: "YOUR_THUMBNAIL_URL_24" },
+			{ title: "Movie 25", driveId: "YOUR_DRIVE_FILE_ID_25", thumbnail: "YOUR_THUMBNAIL_URL_25" },
+			{ title: "Movie 26", driveId: "YOUR_DRIVE_FILE_ID_26", thumbnail: "YOUR_THUMBNAIL_URL_26" },
+			{ title: "Movie 27", driveId: "YOUR_DRIVE_FILE_ID_27", thumbnail: "YOUR_THUMBNAIL_URL_27" },
+			{ title: "Movie 28", driveId: "YOUR_DRIVE_FILE_ID_28", thumbnail: "YOUR_THUMBNAIL_URL_28" },
+			{ title: "Movie 29", driveId: "YOUR_DRIVE_FILE_ID_29", thumbnail: "YOUR_THUMBNAIL_URL_29" },
+			{ title: "Movie 30", driveId: "YOUR_DRIVE_FILE_ID_30", thumbnail: "YOUR_THUMBNAIL_URL_30" },
+            { title: "Movie 31", driveId: "YOUR_DRIVE_FILE_ID_31", thumbnail: "YOUR_THUMBNAIL_URL_31" },
+            { title: "Movie 32", driveId: "YOUR_DRIVE_FILE_ID_32", thumbnail: "YOUR_THUMBNAIL_URL_32" },
+            { title: "Movie 33", driveId: "YOUR_DRIVE_FILE_ID_33", thumbnail: "YOUR_THUMBNAIL_URL_33" },
+            { title: "Movie 34", driveId: "YOUR_DRIVE_FILE_ID_34", thumbnail: "YOUR_THUMBNAIL_URL_34" },
+            { title: "Movie 35", driveId: "YOUR_DRIVE_FILE_ID_35", thumbnail: "YOUR_THUMBNAIL_URL_35" },
+            { title: "Movie 36", driveId: "YOUR_DRIVE_FILE_ID_36", thumbnail: "YOUR_THUMBNAIL_URL_36" },
+			{ title: "Movie 37", driveId: "YOUR_DRIVE_FILE_ID_37", thumbnail: "YOUR_THUMBNAIL_URL_37" },
+			{ title: "Movie 38", driveId: "YOUR_DRIVE_FILE_ID_38", thumbnail: "YOUR_THUMBNAIL_URL_38" },
+			{ title: "Movie 39", driveId: "YOUR_DRIVE_FILE_ID_39", thumbnail: "YOUR_THUMBNAIL_URL_39" },
+			{ title: "Movie 40", driveId: "YOUR_DRIVE_FILE_ID_40", thumbnail: "YOUR_THUMBNAIL_URL_40" },
+			{ title: "Movie 41", driveId: "YOUR_DRIVE_FILE_ID_41", thumbnail: "YOUR_THUMBNAIL_URL_41" },
+			{ title: "Movie 42", driveId: "YOUR_DRIVE_FILE_ID_42", thumbnail: "YOUR_THUMBNAIL_URL_42" },
+			{ title: "Movie 43", driveId: "YOUR_DRIVE_FILE_ID_43", thumbnail: "YOUR_THUMBNAIL_URL_43" },
+			{ title: "Movie 44", driveId: "YOUR_DRIVE_FILE_ID_44", thumbnail: "YOUR_THUMBNAIL_URL_44" },
+			{ title: "Movie 45", driveId: "YOUR_DRIVE_FILE_ID_45", thumbnail: "YOUR_THUMBNAIL_URL_45" },
+			{ title: "Movie 46", driveId: "YOUR_DRIVE_FILE_ID_46", thumbnail: "YOUR_THUMBNAIL_URL_46" },
+			{ title: "Movie 47", driveId: "YOUR_DRIVE_FILE_ID_47", thumbnail: "YOUR_THUMBNAIL_URL_47" },
+			{ title: "Movie 48", driveId: "YOUR_DRIVE_FILE_ID_48", thumbnail: "YOUR_THUMBNAIL_URL_48" },
+			{ title: "Movie 49", driveId: "YOUR_DRIVE_FILE_ID_49", thumbnail: "YOUR_THUMBNAIL_URL_49" },
+			{ title: "Movie 50", driveId: "YOUR_DRIVE_FILE_ID_50", thumbnail: "YOUR_THUMBNAIL_URL_50" },
+			{ title: "Movie 51", driveId: "YOUR_DRIVE_FILE_ID_51", thumbnail: "YOUR_THUMBNAIL_URL_51" },
+			{ title: "Movie 52", driveId: "YOUR_DRIVE_FILE_ID_52", thumbnail: "YOUR_THUMBNAIL_URL_52" },
+			{ title: "Movie 53", driveId: "YOUR_DRIVE_FILE_ID_53", thumbnail: "YOUR_THUMBNAIL_URL_53" },
+			{ title: "Movie 54", driveId: "YOUR_DRIVE_FILE_ID_54", thumbnail: "YOUR_THUMBNAIL_URL_54" },
+			{ title: "Movie 55", driveId: "YOUR_DRIVE_FILE_ID_55", thumbnail: "YOUR_THUMBNAIL_URL_55" },
+			{ title: "Movie 56", driveId: "YOUR_DRIVE_FILE_ID_56", thumbnail: "YOUR_THUMBNAIL_URL_56" },
+			{ title: "Movie 57", driveId: "YOUR_DRIVE_FILE_ID_57", thumbnail: "YOUR_THUMBNAIL_URL_57" },
+			{ title: "Movie 58", driveId: "YOUR_DRIVE_FILE_ID_58", thumbnail: "YOUR_THUMBNAIL_URL_58" },
+			{ title: "Movie 59", driveId: "YOUR_DRIVE_FILE_ID_59", thumbnail: "YOUR_THUMBNAIL_URL_59" },
+			{ title: "Movie 60", driveId: "YOUR_DRIVE_FILE_ID_60", thumbnail: "YOUR_THUMBNAIL_URL_60" },
         ];
+
         let currentPage = 1;
-        const itemsPerPage = 6;
+        const itemsPerPage = 16;
+
         function displayMovies() {
             const moviesContainer = document.getElementById('movies-container');
             moviesContainer.innerHTML = '';
+            
             const startIndex = (currentPage - 1) * itemsPerPage;
             const paginatedMovies = movies.slice(startIndex, startIndex + itemsPerPage);
+
             paginatedMovies.forEach(movie => {
                 const movieElement = document.createElement('div');
                 movieElement.classList.add('movie');
@@ -141,30 +215,37 @@
                 `;
                 moviesContainer.appendChild(movieElement);
             });
+
             document.getElementById('prev-btn').disabled = currentPage === 1;
             document.getElementById('next-btn').disabled = currentPage * itemsPerPage >= movies.length;
         }
+
         function openModal(driveId) {
             document.getElementById('video-frame').src = `https://drive.google.com/file/d/${driveId}/preview`;
             document.getElementById('video-modal').style.display = 'flex';
         }
+
         function closeModal() {
             document.getElementById('video-modal').style.display = 'none';
             document.getElementById('video-frame').src = '';
         }
+
         function nextPage() {
             if (currentPage * itemsPerPage < movies.length) {
                 currentPage++;
                 displayMovies();
             }
         }
+
         function previousPage() {
             if (currentPage > 1) {
                 currentPage--;
                 displayMovies();
             }
         }
+
         displayMovies();
     </script>
 </body>
 </html>
+<style>
